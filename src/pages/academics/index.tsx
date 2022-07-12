@@ -1,56 +1,27 @@
 import { useState } from "react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
 import { Heading, Text, Stack, Box, SimpleGrid, Container, Flex, Spacer } from "@chakra-ui/layout";
-import {
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
-} from '@chakra-ui/react'
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import TableDisplay from "../../components/TableDisplay";
 import { AcademicData } from "../../../interfaces";
+import { academicRecord } from "../../academics";
 
-// TODO: use getStaticProps (with revalidation) to get list of academic data for every semester
-// AcademicRecord: { title: string, data: AcademicData[] }
-const Academics = () => {
+// using get static props because this data could be obtained by parsing in the future
+export const getStaticProps = async () => {
+    const data = academicRecord;
 
-    const [selector, setSelector] = useState(() => ((a: AcademicData) => true));
-
-
-    const sampleAcademics: AcademicData[] = [
-        {
-            course: "Test-101",
-            name: "Test Course Intro",
-            grade: "A",
-            isMajor: true
-        },
-        {
-            course: "Test-102",
-            name: "Advanced Test Course Intro",
-            grade: "A+",
-            isMajor: true
-        },
-        {
-            course: "Test-212",
-            name: "Ran Out of Names",
-            grade: "B",
-            isMajor: false
-        },
-        {
-            course: "Test-312",
-            name: "Can't think of any",
-            grade: "B",
-            isMajor: true
+    return {
+        props: {
+            academicRecord: data
         }
-    ];
+    }
+}
+
+const Academics = ({ academicRecord }) => {
+
+    const [selectors, setSelectors] = useState([]);
 
     const chooseSelector = (value: string, checked: boolean) => {
         if (value === "majorOnly") {
@@ -62,17 +33,26 @@ const Academics = () => {
 
     const setMajorOnly = (checked: boolean) => {
         if (checked) {
-            setSelector(() => onlyMajor);
+            let currentSelectors = selectors;
+            currentSelectors = [...currentSelectors, onlyMajor];
+            setSelectors(currentSelectors);
         } else {
-            setSelector(() => ((a: AcademicData) => true));
+            // remove this filter option
+            const currentSelectors = selectors.filter((selector) => selector.name !== "onlyMajor");
+            setSelectors(currentSelectors);
+
         }
     }
 
     const setHighGradeOnly = (checked: boolean) => {
         if (checked) {
-            setSelector(() => onlyHighGrade);
+            let currentSelectors = selectors;
+            currentSelectors = [...currentSelectors, onlyHighGrade];
+            setSelectors(currentSelectors);
         } else {
-            setSelector(() => ((a: AcademicData) => true));
+            // remove this filter option
+            const currentSelectors = selectors.filter((selector) => selector.name !== "onlyHighGrade");
+            setSelectors(currentSelectors);
         }
     }
 
@@ -117,99 +97,9 @@ const Academics = () => {
                 </CheckboxGroup>
                 <Heading>Classes</Heading>
                 <Stack>
-                    <TableDisplay title="Testing Comp" data={sampleAcademics} option={selector} />
-                    <Heading>Fall 2021</Heading>
-                    <TableContainer>
-                        <Table variant='striped' colorScheme={useColorModeValue('gray.100', 'gray.900')}>
-                            <Thead>
-                                <Tr>
-                                    <Th>Course</Th>
-                                    <Th>Name</Th>
-                                    <Th>Grade</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                <Tr>
-                                    <Td>CSCI-C 211</Td>
-                                    <Td>Introduction to Computer Science</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>MATH-M 211</Td>
-                                    <Td>Calculus I</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>INFO-I 101</Td>
-                                    <Td>Introduction to Infromatics</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>FOLK-F 101</Td>
-                                    <Td>Introduction to Folklore</Td>
-                                    <Td>B+</Td>
-                                </Tr>
-                            </Tbody>
-                        </Table>
-                    </TableContainer>
-                    <Heading>Spring 2022</Heading>
-                    <TableContainer>
-                        <Table variant='striped' colorScheme={useColorModeValue('gray.100', 'gray.900')}>
-                            <Thead>
-                                <Tr>
-                                    <Th>Course</Th>
-                                    <Th>Name</Th>
-                                    <Th>Grade</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                <Tr>
-                                    <Td>CSCI-C 212</Td>
-                                    <Td>Introduction to Software Systems</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>CSCI-C 241</Td>
-                                    <Td>Discrete Structures for Comp. Sci.</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>CSCI-Y 399</Td>
-                                    <Td>Undergraduate Independent Software Dev.</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>MATH-M 212</Td>
-                                    <Td>Calculus II</Td>
-                                    <Td>A-</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>PHIL-P 141</Td>
-                                    <Td>Introduction to Ethics and Justice</Td>
-                                    <Td>A</Td>
-                                </Tr>
-                            </Tbody>
-                        </Table>
-                    </TableContainer>
-                    <Heading>Summer 2022</Heading>
-                    <TableContainer>
-                        <Table variant='striped' colorScheme={useColorModeValue('gray.100', 'gray.900')}>
-                            <Thead>
-                                <Tr>
-                                    <Th>Course</Th>
-                                    <Th>Name</Th>
-                                    <Th>Grade</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                <Tr>
-                                    <Td>CSCI-C 343</Td>
-                                    <Td>Data Structures</Td>
-                                    <Td>A+</Td>
-                                </Tr>
-                            </Tbody>
-                        </Table>
-                    </TableContainer>
+                    {academicRecord.map((record) => (
+                        <TableDisplay title={record.title} data={record.data} options={selectors} key={record.title} />
+                    ))}
                 </Stack>
             </Container>
             <Footer />

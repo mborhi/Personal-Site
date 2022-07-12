@@ -17,43 +17,52 @@ import { AcademicData } from '../../interfaces';
 interface Props {
     title: string
     data: AcademicData[]
-    option: (entry: AcademicData) => boolean
+    options: ((entry: AcademicData) => boolean)[]
 }
 
-// TODO: make the option be a list of functions, iterate through each function to get filteredData
-const TableDisplay = ({ title, data, option }: Props) => {
+const TableDisplay = ({ title, data, options }: Props) => {
 
     const [filteredData, setFilteredData] = useState(data);
 
     useEffect(() => {
-        const filtered = data.filter((entry) => option(entry));
-        setFilteredData(filtered);
-    }, [option]);
+        if (options.length === 0) {
+            setFilteredData(data);
+        } else {
+            let filtered = data;
+            options.forEach((option) => {
+                filtered = filtered.filter((entry) => option(entry));
+            });
+            setFilteredData(filtered);
+        }
+    }, [options]);
 
     return (
-        <>
-            <Heading>{title}</Heading>
-            <TableContainer>
-                <Table variant='striped' colorScheme={useColorModeValue('gray.100', 'gray.900')}>
-                    <Thead>
-                        <Tr>
-                            <Th>Course</Th>
-                            <Th>Name</Th>
-                            <Th>Grade</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {filteredData.map((entry) => (
-                            <Tr key={entry.course}>
-                                <Td>{entry.course}</Td>
-                                <Td>{entry.name}</Td>
-                                <Td>{entry.grade}</Td>
+        filteredData.length > 0 ? (
+            <>
+                <Heading size='lg'>{title}</Heading>
+                <TableContainer>
+                    <Table variant='striped' colorScheme={useColorModeValue('gray.100', 'gray.900')}>
+                        <Thead>
+                            <Tr>
+                                <Th>Course</Th>
+                                <Th>Name</Th>
+                                <Th>Grade</Th>
                             </Tr>
-                        ))}
-                    </Tbody>
-                </Table>
-            </TableContainer>
-        </>
+                        </Thead>
+                        <Tbody>
+                            {filteredData.map((entry) => (
+                                <Tr key={entry.course}>
+                                    <Td>{entry.course}</Td>
+                                    <Td>{entry.name}</Td>
+                                    <Td>{entry.grade}</Td>
+                                </Tr>
+                            ))}
+                        </Tbody>
+                    </Table>
+                </TableContainer>
+            </>
+        ) :
+            <></>
     )
 }
 

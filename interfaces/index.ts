@@ -4,3 +4,8 @@ export interface AcademicData {
     grade: string
     isMajor: boolean
 }
+
+export interface AcademicRecord {
+    title: string
+    data: AcademicData[]
+}
