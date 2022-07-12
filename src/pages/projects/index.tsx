@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Box, SimpleGrid } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/react";
-import { getAllProjectsData } from "../../utils/projects";
+import { getAllProjectsData } from "../../../utils/projects";
 import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
@@ -23,7 +23,7 @@ const Projects = ({ projects }) => {
             <Container bg={useColorModeValue('gray.100', 'gray.900')} maxW="100%" py={12}>
                 <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
                     {projects.map((project) => (
-                        <Box>
+                        <Box key={project.id}>
                             <Card
                                 name={project.name}
                                 description={project.desc}

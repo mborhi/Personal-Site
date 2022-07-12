@@ -1,4 +1,4 @@
-import { AcademicRecord } from "../../interfaces";
+import { AcademicRecord } from "../interfaces";
 
 export const academicRecord: AcademicRecord[] = [
     {

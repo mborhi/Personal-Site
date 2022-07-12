@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllProjectIds, getProjectData } from "../../utils/projects";
+import { getAllProjectIds, getProjectData } from "../../../utils/projects";
 import Nav from '../../components/Nav';
 import { Box, Container, Center } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/color-mode";

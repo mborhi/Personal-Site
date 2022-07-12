@@ -5,8 +5,8 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import TableDisplay from "../../components/TableDisplay";
-import { AcademicData } from "../../../interfaces";
-import { academicRecord } from "../../academics";
+import { AcademicData, AcademicRecord } from "../../../interfaces";
+import { academicRecord } from "../../../academics";
 
 // using get static props because this data could be obtained by parsing in the future
 export const getStaticProps = async () => {
@@ -19,7 +19,11 @@ export const getStaticProps = async () => {
     }
 }
 
-const Academics = ({ academicRecord }) => {
+interface Props {
+    academicRecord: AcademicRecord[]
+}
+
+const Academics = ({ academicRecord }: Props) => {
 
     const [selectors, setSelectors] = useState([]);
 

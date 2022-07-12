@@ -3,7 +3,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useEffect, useRef, useState } from "react";
 import NavBar from "../../components/NavBar";
 import VisualizeSorting from "../../components/VisualizeSorting";
-import { stepBubbleSort } from "../../utils/sort";
+import { stepBubbleSort } from "../../../utils/sort";
 import { Button } from "@chakra-ui/button";
 
 const Visualizations = () => {

@@ -12,6 +12,13 @@ import {
     Link,
 } from '@chakra-ui/react';
 
+
+const loader = ({ src }) => {
+    const relativeSrc = (src) => src.split("/").pop();
+
+    return `http://localhost:3000/public/images/${relativeSrc(src)}`;
+}
+
 export default function blogPostWithImage({ name, description, image, tech, date, id }) {
     console.log(tech);
     const technologies = tech.split(',');
@@ -54,21 +61,12 @@ export default function blogPostWithImage({ name, description, image, tech, date
                     pos={'relative'}>
                     <Image
                         src={image}
+                        alt="FUCK YOU"
                         layout={'fill'}
                     />
                 </Box>
                 <Stack>
                     <TagDisplay items={technologies} />
-                    {/*
-                    <Text
-                        color={'green.500'}
-                        textTransform={'uppercase'}
-                        fontWeight={800}
-                        fontSize={'sm'}
-                        letterSpacing={1.1}>
-                        Java
-                    </Text>
-                    */}
                     <Heading
                         color={useColorModeValue('gray.700', 'white')}
                         fontSize={'2xl'}
@@ -82,18 +80,6 @@ export default function blogPostWithImage({ name, description, image, tech, date
                         {description}
                     </Text>
                 </Stack>
-                {/*
-                <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-                    <Avatar
-                        src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-                        alt={'Author'}
-                    />
-                    <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                        <Text fontWeight={600}>Achim Rolle</Text>
-                        <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
-                    </Stack>
-                </Stack>
-                */}
             </Box>
         </Center>
     );

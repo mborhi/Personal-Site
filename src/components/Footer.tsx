@@ -66,7 +66,7 @@ const Footer = () => {
           <SocialButton label={'Contact'} href={'#'}>
             <TbSend />
           </SocialButton>
-          <SocialButton label={'LinkedIn'} href={'#'}>
+          <SocialButton label={'LinkedIn'} href={'https://www.linkedin.com/in/marcell-borhi/'}>
             <TiSocialLinkedinCircular />
           </SocialButton>
         </Stack>
