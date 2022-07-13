@@ -9,13 +9,15 @@ import {
     StackDivider,
     Icon,
     useColorModeValue,
+    Box
 } from '@chakra-ui/react';
 import {
     IoAnalyticsSharp,
     IoLogoBitcoin,
     IoSearchSharp,
 } from 'react-icons/io5';
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
+import PictureModal from './PictureModal';
 
 interface FeatureProps {
     text: string;
@@ -41,6 +43,15 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 };
 
 export default function SplitWithImage() {
+
+    const [modalOpen, setModelOpen] = useState(false);
+
+    const handleModal = () => {
+        // console.log('clicked')
+        setModelOpen(!modalOpen)
+
+    }
+
     return (
         <Container maxW={'5xl'} py={12}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
@@ -57,7 +68,7 @@ export default function SplitWithImage() {
                         About Me
                     </Text>
                     <Heading>Software Engineer</Heading>
-                    <Text color={'gray.500'} fontSize={'lg'}>
+                    <Text fontSize={'lg'}>
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                         nonumy eirmod tempor invidunt ut laboreLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                         nonumy eirmod tempor invidunt ut laboreLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -123,15 +134,24 @@ export default function SplitWithImage() {
                 </Stack>
                 <Flex>
                     <Image
+                        onClick={() => handleModal()}
                         rounded={'md'}
                         alt={'feature image'}
                         src={
-                            'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+                            'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg'
                         }
                         objectFit={'cover'}
                     />
                 </Flex>
             </SimpleGrid>
+            <PictureModal image={<Image
+                rounded={'md'}
+                alt={'feature image'}
+                src={
+                    'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg'
+                }
+                objectFit={'cover'}
+            />} open={modalOpen} handleModal={handleModal} title="Resume" />
         </Container>
     );
 }
