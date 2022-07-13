@@ -38,24 +38,25 @@ const theme = extendTheme({
         fontWeight: 'bold',
       },
       h2: {
-        fontsize: ['1.5rem', '2.25rem'],
-        fontweight: 'semibold',
+        fontSize: ['1.75rem', '2.75rem'],
+        fontWeight: 'bold',
       },
       h3: {
-        fontsize: ['1.5rem', '2.25rem'],
-        fontweight: 'semibold'
+        fontSize: ['1.5rem', '2.7rem'],
+        fontWeight: 'bold',
       },
       ul: {
-        fontsize: ['1.5rem', '2.25rem'],
-        fontweight: 'semibold'
+        fontSize: ['1rem', '1.75rem'],
+        fontWeight: 'normal',
+        listStyleType: 'none'
       },
       li: {
-        fontsize: ['1.5rem', '2.25rem'],
-        fontweight: 'semibold'
+        fontSize: ['1rem', '1.75rem'],
+        fontWeight: 'normal',
       },
       p: {
-        fontSize: ['1rem', '1.5rem'],
-        fontWeight: 'semibold',
+        fontSize: ['1rem', '1.75rem'],
+        fontWeight: 'normal',
       }
     },
   },

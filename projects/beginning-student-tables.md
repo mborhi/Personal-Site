@@ -25,11 +25,8 @@ Information about development
 
 ### Testing
 
-
 How I used test driven development to make this
 
-
 ## What I learned
-
 
 This section explains what I learned in the process of making this project

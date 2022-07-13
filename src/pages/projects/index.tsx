@@ -6,6 +6,7 @@ import Nav from '../../components/Nav';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
 import NavBar from "../../components/NavBar";
+import BreadcrumbNav from "../../components/BreadcrumbNav";
 
 export const getStaticProps = async () => {
     const projects = getAllProjectsData();
