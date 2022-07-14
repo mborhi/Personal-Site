@@ -18,11 +18,26 @@ import {
 } from 'react-icons/io5';
 import { ReactElement, useState } from 'react';
 import PictureModal from './PictureModal';
+import { saveAs } from 'file-saver';
 
 interface FeatureProps {
     text: string;
     iconBg: string;
     icon?: ReactElement;
+}
+
+const Picture = ({ action }) => {
+    return (
+        <Image
+            onClick={() => action()}
+            rounded={'md'}
+            alt={'feature image'}
+            src={
+                'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg'
+            }
+            objectFit={'cover'}
+        />
+    )
 }
 
 const Feature = ({ text, icon, iconBg }: FeatureProps) => {
@@ -47,9 +62,20 @@ export default function SplitWithImage() {
     const [modalOpen, setModelOpen] = useState(false);
 
     const handleModal = () => {
-        // console.log('clicked')
         setModelOpen(!modalOpen)
+    }
 
+    const downloadImage = (image: string, name: string) => {
+        try {
+            let isFileSaverSupported = !!new Blob;
+            if (isFileSaverSupported) {
+                // download the image
+                saveAs('https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg', name);
+            }
+        } catch (e) {
+            console.log('error downloading: ', e);
+            // display a toast to user notify of this
+        }
     }
 
     return (
@@ -133,25 +159,10 @@ export default function SplitWithImage() {
                     </Stack>
                 </Stack>
                 <Flex>
-                    <Image
-                        onClick={() => handleModal()}
-                        rounded={'md'}
-                        alt={'feature image'}
-                        src={
-                            'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg'
-                        }
-                        objectFit={'cover'}
-                    />
+                    <Picture action={handleModal} />
                 </Flex>
             </SimpleGrid>
-            <PictureModal image={<Image
-                rounded={'md'}
-                alt={'feature image'}
-                src={
-                    'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg'
-                }
-                objectFit={'cover'}
-            />} open={modalOpen} handleModal={handleModal} title="Resume" />
+            <PictureModal image={<Picture action={() => null} />} open={modalOpen} handleModal={handleModal} title="Resume" action={downloadImage} />
         </Container>
     );
 }

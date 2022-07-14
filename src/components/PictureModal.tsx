@@ -6,11 +6,10 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    useDisclosure,
     Button
 } from '@chakra-ui/react'
 
-const PictureModal = ({ image, open, handleModal, title }) => {
+const PictureModal = ({ title, image, open, handleModal, action }) => {
 
     const handleClose = () => {
         handleModal();
@@ -29,10 +28,10 @@ const PictureModal = ({ image, open, handleModal, title }) => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={() => handleClose()}>
+                        <Button colorScheme='blue' mr={3} onClick={() => handleModal()}>
                             Close
                         </Button>
-                        <Button variant='ghost'>Download</Button>
+                        <Button variant='ghost' onClick={() => action('imageSource', 'title.jpg')}>Download</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
