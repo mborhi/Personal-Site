@@ -69,20 +69,20 @@ export default function NavBar() {
                             <Link href="https://www.linkedin.com/in/marcell-borhi/">
                                 <Tooltip hasArrow label='Contact Me' bg='gray.300' color='black'>
                                     <Button>
-                                        <FiSend size="2em" />
+                                        <FiSend size="1.5em" />
                                     </Button>
                                 </Tooltip>
                             </Link>
                             <Link href="https://github.com/mborhi">
                                 <Tooltip hasArrow label='GitHub' bg='gray.300' color='black'>
                                     <Button >
-                                        <FaGithub size="2em" />
+                                        <FaGithub size="1.5em" />
                                     </Button>
                                 </Tooltip>
                             </Link>
                             <Tooltip hasArrow label='Toggle Color' bg='gray.300' color='black'>
                                 <Button onClick={toggleColorMode}>
-                                    {colorMode === 'light' ? <MoonIcon boxSize="2em" /> : <SunIcon boxSize="2em" />}
+                                    {colorMode === 'light' ? <MoonIcon boxSize="1.5em" /> : <SunIcon boxSize="1.5em" />}
                                 </Button>
                             </Tooltip>
                         </Stack>

@@ -6,7 +6,6 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import { BiArrowBack } from 'react-icons/bi';
-import BreadcrumbNav from "../../components/BreadcrumbNav";
 import { HStack } from "@chakra-ui/react";
 
 export const getStaticProps = async ({ params }) => {
