@@ -22,28 +22,83 @@ export const stepBubbleSort = ({ nums, setNums, i, j, setI, setJ }) => {
     }
 }
 
-export const selectionSort = async ({ nums, min, setNums, i, j, setI, setJ }) => {
-    let dataArray = [...nums];
-    let size = nums.length;
-    if (dataArray[j] < dataArray[min.get()]) {
-        min.set(j);
-    }
-    if (j === size - 1) {
-        let swap = dataArray[i];
-        dataArray[i] = dataArray[min.get()];
-        dataArray[min.get()] = swap;
-        setNums(dataArray);
-        min.set(i + 1);
-        setJ(i + 1);
+// start from i = 1
+export const stepInsertionSort = ({ nums, setNums, i, setI, j, setJ }) => {
+    let arr = [...nums];
+    const size = nums.length;
+    let key = arr[i];
+
+    if (j === -1 && key < arr[j]) {
+        arr[j + 1] = key;
+        setNums(arr);
         setI(i + 1);
+        setJ(i); // curr i - 1
     }
-    else if (i < size && j < size) {
-        setJ(j + 1);
+
+    if (i + 1 !== size) {
+        // j passed as i - 1
+        // make one swap
+        if (key < arr[j]) {
+            // swap
+            arr[j + 1] = arr[j];
+        } else {
+            // decrement j
+            setJ(j - 1);
+            // set nums
+            setNums(arr);
+            // increment i
+            setI(i + 1);
+        }
+    } else {
+        // done
     }
+}
+
+// repeatedly find the smallest element, move to beginning of non-sorted section of array
+export const selectionSort = async ({ nums, setMin, getMin, setNums, i, j, setI, setJ }) => {
+    let arr = [...nums];
+    // let dataArray = [...nums];
+    // let size = nums.length;
+    // if (dataArray[j] < dataArray[min.get()]) {
+    //     min.set(j);
+    // }
+    // if (j === size - 1) {
+    //     let swap = dataArray[i];
+    //     dataArray[i] = dataArray[min.get()];
+    //     dataArray[min.get()] = swap;
+    //     setNums(dataArray);
+    //     min.set(i + 1);
+    //     setJ(i + 1);
+    //     setI(i + 1);
+    // }
+    // else if (i < size && j < size) {
+    //     setJ(j + 1);
+    // }
 
 }
 
-function swap(arr, a, b) {
+/**
+ * Finds the index of the smallest number in the given array
+ * @param nums the numbers to search
+ * @returns the index of the smallest number
+ */
+const getMin = (nums: number[]): number => {
+    let smallest = 0;
+    nums.forEach((num, i) => {
+        if (nums[smallest] >= num) {
+            smallest = i;
+        }
+    });
+    return smallest;
+}
+
+/**
+ * Swaps the values at the two given indices in the specified array
+ * @param arr the array to swap in
+ * @param a the first index
+ * @param b the second index
+ */
+const swap = (arr: number[], a: number, b: number) => {
     let tmp = arr[a];
     arr[a] = arr[b];
     arr[b] = tmp;
