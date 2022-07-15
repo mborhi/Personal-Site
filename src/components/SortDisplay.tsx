@@ -19,20 +19,21 @@ const SortDisplay = ({ nums }: Props) => {
             overflow={"auto"}
             flex="1"
         >
-            {nums.map((num) => {
+            {nums.map((num, i) => {
                 return (
                     <Box
                         display={"flex"}
                         justifyContent="flex-end"
                         textAlign="center"
                         flexDirection="column"
+                        key={i}
                     >
                         <Box
                             roundedTop={"xs"}
                             border={"1px"}
                             borderColor={"facebook.600"}
                             bg={"facebook.500"}
-                            style={{ height: `${num}px` }}
+                            height={`${num}px`}
                         ></Box>
                     </Box>
                 );
