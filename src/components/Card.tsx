@@ -20,11 +20,9 @@ const loader = ({ src }) => {
 }
 
 export default function blogPostWithImage({ name, description, image, tech, date, id }) {
-    console.log(tech);
     const technologies = tech.split(',');
 
     const TagDisplay = ({ items }) => {
-        console.log(items);
         return (
             <HStack spacing={2}>
                 {items.map((item) => (
@@ -59,11 +57,13 @@ export default function blogPostWithImage({ name, description, image, tech, date
                     mx={-6}
                     mb={6}
                     pos={'relative'}>
-                    <Image
-                        src={image}
-                        alt="FUCK YOU"
-                        layout={'fill'}
-                    />
+                    <Link href={`/projects/${id}`}>
+                        <Image
+                            src={image}
+                            alt="project image"
+                            layout={'fill'}
+                        />
+                    </Link>
                 </Box>
                 <Stack>
                     <TagDisplay items={technologies} />

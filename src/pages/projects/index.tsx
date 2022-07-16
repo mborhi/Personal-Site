@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Container, Box, SimpleGrid } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/react";
 import { getAllProjectsData } from "../../../utils/projects";
@@ -22,8 +23,8 @@ const Projects = ({ projects }) => {
             <NavBar />
             <Container bg={useColorModeValue('gray.100', 'gray.900')} maxW="100%" py={12}>
                 <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-                    {projects.map((project) => (
-                        <Box key={project.id}>
+                    {projects.map((project, idx) => (
+                        <Box key={idx}>
                             <Card
                                 name={project.name}
                                 description={project.desc}
