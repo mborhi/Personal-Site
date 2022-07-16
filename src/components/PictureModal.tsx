@@ -8,6 +8,15 @@ import {
     ModalCloseButton,
     Button
 } from '@chakra-ui/react'
+import { ReactElement } from 'react';
+
+interface Props {
+    title: string
+    image: ReactElement
+    open: boolean
+    handleModal: () => void
+    action: () => void
+}
 
 const PictureModal = ({ title, image, open, handleModal, action }) => {
 

@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { IconType } from "react-icons/lib";
 
 export interface AcademicData {
     course: string
@@ -14,7 +15,7 @@ export interface AcademicRecord {
 
 export interface FeatureInfo {
     name: string
-    icon: ReactElement
+    icon: IconType
     iconBg: string[]
     desc: string
     roundness?: string
