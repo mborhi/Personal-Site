@@ -2,7 +2,7 @@ import { AcademicRecord } from "../interfaces";
 
 export const academicRecord: AcademicRecord[] = [
     {
-        title: "Fall 2020 (Dual Credit)",
+        title: "Fall 2020 (HS Dual Credit)",
         data: [
             {
                 course: "MATH-M 118",

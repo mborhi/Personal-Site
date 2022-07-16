@@ -46,16 +46,16 @@ const theme = extendTheme({
         fontWeight: 'bold',
       },
       ul: {
-        fontSize: ['1rem', '1.75rem'],
+        fontSize: ['1rem', '1.4rem'],
         fontWeight: 'normal',
         listStyleType: 'none'
       },
       li: {
-        fontSize: ['1rem', '1.75rem'],
+        fontSize: ['1rem', '1.4rem'],
         fontWeight: 'normal',
       },
       p: {
-        fontSize: ['1rem', '1.75rem'],
+        fontSize: ['1rem', '1.4rem'],
         fontWeight: 'normal',
       }
     },
