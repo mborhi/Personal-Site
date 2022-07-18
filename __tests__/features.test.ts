@@ -1,16 +1,17 @@
 import { IconType } from "react-icons/lib";
 import { SiJavascript } from "react-icons/si";
 import { FeatureInfo, FeaturesData } from "../interfaces";
-import { getMatches, loadFeaturesFromFile, parseFeatures, parseFeaturesData, parseFeaturesDataList } from "../utils/features";
+import { getFirstMatch, loadFeaturesFromFile, parseFeatures, parseFeaturesData, parseFeaturesDataList } from "../utils/features";
 
 describe("Parse features data", () => {
     it('correctly returns a FeaturesData object from string', () => {
-        const text = "title: Title\nfeatures:\nname: MockName\nicon: SiJavascript\niconBg: yellow.100, yellow.900\ndesc: This is a mock feature.\
+        const text = "title: Title\nfeatures:\nname: MockName\ncolor: yellow.500\nicon: SiJavascript\niconBg: yellow.100, yellow.900\ndesc: This is a mock feature.\
         \nroundness: sm";
         const expectedFeaturesData: FeaturesData = {
             title: "Title",
             features: [{
                 name: "MockName",
+                color: "yellow.500",
                 icon: "SiJavascript",
                 iconBg: ["yellow.100", "yellow.900"],
                 desc: "This is a mock feature.",
@@ -27,12 +28,13 @@ describe("Parse features data", () => {
     });
 
     it('correctly returns a FeaturesData list from string', () => {
-        const text = "title: Title\nfeatures:\nname: MockName\nicon: SiJavascript\niconBg: yellow.100, yellow.900\ndesc: This is a mock feature.\
+        const text = "title: Title\nfeatures:\nname: MockName\ncolor: yellow.500\nicon: SiJavascript\niconBg: yellow.100, yellow.900\ndesc: This is a mock feature.\
         \nroundness: md";
         const expected: FeaturesData[] = [{
             title: "Title",
             features: [{
                 name: "MockName",
+                color: "yellow.500",
                 icon: "SiJavascript",
                 iconBg: ["yellow.100", "yellow.900"],
                 desc: "This is a mock feature.",
@@ -51,6 +53,7 @@ describe("Parse features data", () => {
             title: "Title",
             features: [{
                 name: "MockName",
+                color: "yellow.500",
                 icon: "SiJavascript",
                 iconBg: ["yellow.100", "yellow.900"],
                 desc: "This is a mock feature.",
@@ -66,11 +69,12 @@ describe("Parse features data", () => {
         const text = "title: SKILLS\nfeatures:\nname: JavaScript / TypeScript\nicon: SiJavascript\niconBg: yellow.200, yellow.900\ndesc: This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section.\
         \nroundness: sm\nfeatures:\nname: Java\nicon: SiJava\niconBg: gray.100, gray.700\ndesc: I used Java to develop my very simple Ray Tracer, as well as in my courses: Software Systems, Data Structures\
         \nroundness: full";
-        const expected = [{
+        const expected: FeaturesData[] = [{
             title: "SKILLS",
             features: [
                 {
                     name: "JavaScript / TypeScript",
+                    color: "yellow.500",
                     icon: "SiJavascript",
                     iconBg: ["yellow.200", "yellow.900"],
                     desc: "This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section.",
@@ -78,6 +82,7 @@ describe("Parse features data", () => {
                 },
                 {
                     name: "Java",
+                    color: "blue.400",
                     icon: "SiJava",
                     iconBg: ["gray.100", "gray.700"],
                     desc: "I used Java to develop my very simple Ray Tracer, as well as in my courses: Software Systems, Data Structures",
@@ -98,20 +103,14 @@ describe("Parse features data", () => {
 });
 
 describe("parse features", () => {
-    console.log('running describe parse test');
     const featureRE = /.*/;
-    it('correctly gets match', () => {
-        const text = "abc";
-        const match = getMatches(text, featureRE);
-        expect(match).toEqual("abc");
-    });
 
     it('correctly reads in name line', () => {
         let contents = "name: abc";
         // cut off 'name: '
         contents = contents.substring(6);
         // get the name and assign it
-        let name: string = getMatches(contents, featureRE);
+        let name: string = getFirstMatch(contents, featureRE);
         expect(name).toEqual("abc");
         contents = contents.substring(name.length);
         expect(contents).toEqual("");
@@ -122,6 +121,7 @@ describe("parse features", () => {
         const text = "name: MockName\nicon: SiJavascript\niconBg: yellow.100, yellow.900\ndesc: This is a mock feature.\nroundness: sm";
         const expectedInfo: FeatureInfo = {
             name: "MockName",
+            color: "yellow.500",
             icon: "SiJavascript",
             iconBg: ["yellow.100", "yellow.900"],
             desc: "This is a mock feature.",
@@ -160,4 +160,13 @@ describe("load features from file", () => {
         const actual = loadFeaturesFromFile("");
         expect(actual).toEqual(expected);
     });
-})
+});
+
+describe("Regex", () => {
+    it('correctly gets match', () => {
+        const featureRE = /.*/;
+        const text = "abc";
+        const match = getFirstMatch(text, featureRE);
+        expect(match).toEqual("abc");
+    });
+});

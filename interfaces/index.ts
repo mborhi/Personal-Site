@@ -15,6 +15,7 @@ export interface AcademicRecord {
 
 export interface FeatureInfo {
     name: string
+    color: string
     icon: string
     iconBg: string[]
     desc: string
