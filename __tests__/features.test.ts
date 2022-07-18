@@ -137,29 +137,31 @@ describe("parse features", () => {
 });
 
 describe("load features from file", () => {
-    // it("correctly loads all FeautreData[] from file", () => {
-    //     const expected = [{
-    //         title: "SKILLS",
-    //         features: [
-    //             {
-    //                 name: "JavaScript / TypeScript",
-    //                 icon: "SiJavascript",
-    //                 iconBg: ["yellow.200", "yellow.900"],
-    //                 desc: "This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section",
-    //                 roundness: "sm"
-    //             },
-    //             {
-    //                 name: "Java",
-    //                 icon: "SiJava",
-    //                 iconBg: ["gray.100", "gray.700"],
-    //                 desc: "I used Java to develop my very simple Ray Tracer, as well as in my courses: Software Systems, Data Structures",
-    //                 roundness: "full"
-    //             }
-    //         ]
-    //     }];
-    //     const actual = loadFeaturesFromFile("");
-    //     expect(actual).toEqual(expected);
-    // });
+    it("correctly loads all FeautreData[] from file", () => {
+        const expected = [{
+            title: "SKILLS",
+            features: [
+                {
+                    name: "JavaScript / TypeScript",
+                    color: "yellow.400",
+                    icon: "SiJavascript",
+                    iconBg: ["yellow.200", "yellow.900"],
+                    desc: "This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section",
+                    roundness: "sm"
+                },
+                {
+                    name: "Java",
+                    color: "blue.500",
+                    icon: "SiJava",
+                    iconBg: ["gray.100", "gray.700"],
+                    desc: "I used Java to develop my very simple Ray Tracer, as well as in my courses: Software Systems, Data Structures",
+                    roundness: "full"
+                }
+            ]
+        }];
+        const actual = loadFeaturesFromFile("features_test.txt");
+        expect(actual).toEqual(expected);
+    });
 });
 
 describe("Regex", () => {

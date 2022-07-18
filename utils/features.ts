@@ -14,7 +14,7 @@ const roundnessRE = /^\s*roundness:(?=$|[\s",'`()[\]{}|;#])/;
 const featureRE = /.*/;
 
 export const loadFeaturesFromFile = (fileName: string) => {
-    const featuresFile = path.join(process.cwd(), '/main_content/features.txt');
+    const featuresFile = path.join(process.cwd(), `/main_content/${fileName}`);
     const contents = fs.readFileSync(featuresFile, 'utf-8').trim();
 
     return parseFeaturesDataList(contents);
