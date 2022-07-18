@@ -24,7 +24,6 @@ export const loadFeaturesFromFile = (fileName: string) => {
 export const parseFeaturesDataList = (contents: string): FeaturesData[] => {
     let featuresDataList: FeaturesData[] = [];
     while (contents.length > 0) {
-        console.log('parseFeaturesDataList: ', contents);
         if (titleRE.test(contents)) {
             // get the FeaturesData
             let featuresData = parseFeaturesData(contents);
@@ -39,11 +38,9 @@ export const parseFeaturesDataList = (contents: string): FeaturesData[] => {
 
 export const parseFeaturesData = (contents: string): { "contents": string, "info": FeaturesData } => {
     // parse until everything has been parsed from the file contents
-    // let featuresDataList: FeaturesData[] = [];
     let featuresData;
     let features;
     while (contents.length > 0) {
-        console.log('parseFeaturesData: ', contents);
         if (titleRE.test(contents)) {
             // strip the 'title: '
             contents = contents.trim().substring(6);
@@ -71,11 +68,9 @@ export const parseFeaturesData = (contents: string): { "contents": string, "info
 const parseFeaturesList = (contents: string): { "contents": string, "info": FeatureInfo[] } => {
     let featuresList = [];
     while (contents.length > 0) {
-        console.log('feature list received: ', contents);
         if (titleRE.test(contents)) {
             return { "contents": contents, "info": featuresList };
         } else if (featuresRE.test(contents)) {
-            console.log('matched features:', contents);
             // remove 'features:'
             contents = contents.substring(10);
             let features = parseFeatures(contents);

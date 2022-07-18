@@ -36,7 +36,7 @@ desc: Git, Kubernetes, Docker, Vercel
 roundness: md
 features:
 name: Database 
-color: black.700
+color: red.500
 icon: GiDatabase
 iconBg: gray.200, gray.700
 desc: MongoDB, Redis, SQLite
