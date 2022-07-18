@@ -1,0 +1,37 @@
+title: SKILLS
+features:
+name: JavaScript / TypeScript
+icon: SiJavascript 
+iconBg: yellow.200, yellow.900
+desc: This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section
+roundness: sm
+features:
+name: Java
+icon: SiJava
+iconBg: gray.100, gray.700
+desc: I used Java to develop my very simple Ray Tracer, as well as in my courses: Software Systems, Data Structures
+roundness: full
+features:
+name: Python
+icon: SiPython
+iconBg: purple.100, purple.900
+desc: The first programming language I learned!
+roundness: md
+features:
+name: Web Dev
+icon: MdOutlineComputer
+iconBg: gray.200, gray.700
+desc: Next.js, React.js, HTML, CSS
+roundness: lg
+features:
+name: Development Tools
+icon: FiServer
+iconBg: gray.300, gray.700
+desc: Git, Kubernetes, Docker, Vercel
+roundness: md
+features:
+name: Database 
+icon: GiDatabase
+iconBg: gray.200, gray.700
+desc: MongoDB, Redis, SQLite
+roundness: xl
