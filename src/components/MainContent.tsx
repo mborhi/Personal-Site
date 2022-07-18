@@ -19,7 +19,9 @@ import { MdOutlineComputer } from 'react-icons/md';
 import * as SiIcons from 'react-icons/si';
 import * as GiIcons from 'react-icons/gi';
 import * as IoIcons from 'react-icons/io5';
-import * as MdIcons from 'react-icons/md'
+import * as MdIcons from 'react-icons/md';
+import * as FiIcons from 'react-icons/fi';
+import Feature from './Feature';
 import { GiWeightLiftingUp, GiHiking, GiDatabase } from 'react-icons/gi';
 import { FiServer } from 'react-icons/fi';
 import { ReactElement, useState } from 'react';
@@ -27,46 +29,6 @@ import PictureModal from './PictureModal';
 import { saveAs } from 'file-saver';
 import { FeaturesData } from '../../interfaces';
 import { IconType } from 'react-icons/lib';
-
-
-// change this to FeatureInfo
-interface FeatureProps {
-    text: string;
-    iconBg: string;
-    icon?: ReactElement;
-    roundness?: string;
-    desc?: string;
-}
-
-
-
-// Move to separate file
-const Feature = ({ text, icon, iconBg, roundness, desc }: FeatureProps) => {
-
-    return (
-        <>
-            <Stack direction={'row'} align={'center'}>
-                <Flex
-                    w={8}
-                    h={8}
-                    align={'center'}
-                    justify={'center'}
-                    rounded={roundness ? roundness : 'full'}
-                    bg={iconBg}>
-                    {icon}
-                </Flex>
-                <Text fontWeight={600}>{text}</Text>
-            </Stack>
-            {/*<Text paddingTop={3}>
-                {infos.map((info, i) => (
-                    <> {info.icon} {info.name} </>
-                ))}
-                </Text>*/}
-            <Text fontWeight={500} paddingTop={3}>{desc}</Text>
-        </>
-
-    );
-};
 
 interface PictureProps {
     action: () => void
@@ -101,10 +63,16 @@ export default function SplitWithImage({ content }: Props) {
 
     const [modalOpen, setModelOpen] = useState(false);
 
-    const iconTypes = [SiIcons, GiIcons, IoIcons, MdIcons];
+    // types of Icons 
+    const iconTypes = [SiIcons, GiIcons, IoIcons, MdIcons, FiIcons];
 
+    /**
+     * Resolves an icon name to an icon
+     * @param {string} iconName the name of the icon
+     * @returns {IconType} the Icon
+     */
     const resIcon = (iconName: string) => {
-        let icon;
+        let icon: IconType;
         iconTypes.forEach((i) => {
             if (i[iconName] !== undefined) icon = i[iconName];
         });
@@ -133,19 +101,6 @@ export default function SplitWithImage({ content }: Props) {
 
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <Stack spacing={4}>
-                    {/*
-                    <Text
-                        textTransform={'uppercase'}
-                        color={'blue.500'}
-                        fontWeight={600}
-                        fontSize={'sm'}
-                        bg={useColorModeValue('blue.100', 'blue.900')}
-                        p={2}
-                        alignSelf={'flex-start'}
-                        rounded={'md'}>
-                        About Me
-                    </Text>
-                    */}
                     <Heading as='h1' fontSize='1.2em' fontWeight='semibold'>ABOUT ME</Heading>
                     <Text fontSize={'lg'}>
                         As a Computer Science major, I am specializing in Artifical Intelligence and graduating in Spring 2025.
