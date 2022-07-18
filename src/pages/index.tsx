@@ -15,7 +15,6 @@ export const getStaticProps = async () => {
 }
 
 const Index = ({ content }) => {
-  console.log(content);
   return (
     <>
       <NavBar />

@@ -11,10 +11,30 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useEffect, useRef, useState } from "react";
 import NavBar from "../../components/NavBar";
 import VisualizeSorting from "../../components/VisualizeSorting";
-import { selectionSort, stepBubbleSort } from "../../../utils/sort";
+import { selectionSort, stepBubbleSort, stepInsertionSort } from "../../../utils/sort";
 import { Button, ButtonGroup } from "@chakra-ui/button";
 import SortDisplay from "../../components/SortDisplay";
 import Footer from "../../components/Footer";
+import MenuOptions from "../../components/MenuOptions";
+
+interface StepAlgoParams {
+    nums: number[]
+    setNums: (nums: number[]) => void
+    i: number
+    j: number
+    setI: (num: number) => void
+    setJ: (num: number) => void
+}
+
+interface SortOption {
+    value: (vals: StepAlgoParams) => void
+    name: string
+}
+
+interface SpeedOption {
+    value: number
+    name: string
+}
 
 const Visualizations = () => {
     // let arr = Array.from({ length: 40 }, () => Math.floor(Math.random() * 500));
@@ -24,6 +44,10 @@ const Visualizations = () => {
     const [paused, setPaused] = useState(true);
     const [i, setI] = useState(-1);
     const [j, setJ] = useState(-1);
+    // sorting options
+    const [sortOption, setSortOption] = useState<SortOption>({ value: stepBubbleSort, name: "Bubble Sort" });
+    const [speed, setSpeed] = useState<SpeedOption>({ value: 1, name: "Very Fast" });
+
     const timerRef = useRef(null);
 
     const toggleSort = () => {
@@ -86,27 +110,64 @@ const Visualizations = () => {
                     currSteps.push(nums);
                     setArrSteps(currSteps);
                 }
-            }, 1);
+            }, speed.value);
         }
     }, [i, j, paused]);
 
-    // have drop down menu to select sorting algorithm
+    const allSortOptions: SortOption[] = [
+        { value: stepBubbleSort, name: "Bubble Sort" },
+        { value: stepInsertionSort, name: "Insertion Sort" },
+    ];
+
+    const allSpeedOptions: SpeedOption[] = [
+        { value: 1, name: "Very Fast" },
+        { value: 10, name: "Fast" },
+        { value: 100, name: "Medium" },
+        { value: 200, name: "Slow" },
+        { value: 500, name: "Very Slow" },
+    ];
+
+    const changeSortOption = ({ name, value }) => {
+        setSortOption({ value: value, name: name });
+    }
+
+    const changeSpeedOption = ({ name, value }) => {
+        setSpeed({ value: value, name: name });
+    }
 
     return (
         <>
             <NavBar />
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
-                <Heading>Visualizations</Heading>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+                <Box textAlign='center'>
+                    <Heading>Visualizations</Heading>
+                </Box>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} paddingTop={10}>
+                    <GridItem>
+                        <Text>
+                            Use the slider to adjust the size of the array. After selecting the size,
+                            click the "Play" button, to visualize the sorting. Pause the sorting at any time, and use
+                            the buttons to go backwards and forwards in 'steps' in the visualization.
+                        </Text>
+                    </GridItem>
+                    <GridItem>
+                        <Container centerContent>
+                            <Text>Select a sorting algorithm and speed</Text>
+                            <SimpleGrid alignItems={'center'} columns={{ base: 1, md: 2 }} spacing={3}>
+                                <GridItem>
+                                    <MenuOptions selector={(s) => changeSortOption(s)} options={allSortOptions} selected={sortOption.name} comingSoon={true} />
+                                </GridItem>
+                                <GridItem>
+                                    <MenuOptions selector={(s) => changeSpeedOption(s)} options={allSpeedOptions} selected={speed.name} comingSoon={false} />
+                                </GridItem>
+                            </SimpleGrid>
+                        </Container>
+                    </GridItem>
+                </SimpleGrid>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} paddingTop={10}>
                     <GridItem>
                         <VStack>
-                            <Text>This is a visualization for Bubble Sort.</Text>
-                            <Text>
-                                Use the slider below to adjust the size of the array. Once you're done selecting the size,
-                                click the "Play" button, to visualize the sorting. Pause the sorting at any time, and use
-                                the arrows below to go backwards and forwards in 'steps' in the visualization.
-
-                            </Text>
+                            <Text fontWeight='bold'>This is a visualization for {sortOption.name}</Text>
                             <Heading as='h5' size='sm'>Array Size:</Heading>
                             <Slider defaultValue={50} min={10} max={110} onChange={(val) => generateArr(val, val)}>
                                 <SliderTrack>
