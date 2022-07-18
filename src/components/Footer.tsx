@@ -9,8 +9,11 @@ import {
   VisuallyHidden,
 } from '@chakra-ui/react';
 import { FaGithub, FaInstagram } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
 import { TiSocialLinkedinCircular } from 'react-icons/ti';
 import { TbSend } from 'react-icons/tb';
+import { VscCircleFilled } from 'react-icons/vsc';
+import { BsLinkedin } from 'react-icons/bs';
 import { ReactNode } from 'react';
 
 
@@ -48,7 +51,7 @@ const SocialButton = ({
 const Footer = () => {
   return (
     <Box
-      bg={useColorModeValue('gray.100', 'gray.900')}
+      bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container
         as={Stack}
@@ -58,16 +61,16 @@ const Footer = () => {
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}>
-        <Text>© 2022 Marcell Borhi</Text>
+        <Text>© 2022 Marcell Borhi — mborhi@iu.edu</Text>
         <Stack direction={'row'} spacing={6}>
           <SocialButton label={'Github'} href={'https://github.com/mborhi'}>
             <FaGithub />
           </SocialButton>
           <SocialButton label={'Contact'} href={'#'}>
-            <TbSend />
+            <FiMail />
           </SocialButton>
           <SocialButton label={'LinkedIn'} href={'https://www.linkedin.com/in/marcell-borhi/'}>
-            <TiSocialLinkedinCircular />
+            <BsLinkedin />
           </SocialButton>
         </Stack>
       </Container>

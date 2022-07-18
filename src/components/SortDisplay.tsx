@@ -14,7 +14,7 @@ const SortDisplay = ({ nums }: Props) => {
             display="grid"
             gridAutoFlow={"column"}
             gridAutoColumns={"auto"}
-            bg={useColorModeValue('gray.100', 'gray.900')}
+            bg={useColorModeValue('gray.50', 'gray.900')}
             minH={"full"}
             overflow={"auto"}
             flex="1"

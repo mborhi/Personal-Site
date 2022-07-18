@@ -95,7 +95,7 @@ const Visualizations = () => {
     return (
         <>
             <NavBar />
-            <Container bg={useColorModeValue('gray.100', 'gray.900')} maxW="100%" py={12}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <Heading>Visualizations</Heading>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                     <GridItem>

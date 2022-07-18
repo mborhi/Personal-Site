@@ -15,7 +15,7 @@ export interface AcademicRecord {
 
 export interface FeatureInfo {
     name: string
-    icon: IconType
+    icon: string
     iconBg: string[]
     desc: string
     roundness?: string

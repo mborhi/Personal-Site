@@ -19,8 +19,9 @@ import {
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FaGithub } from 'react-icons/fa';
-import { FiSend } from 'react-icons/fi';
+import { FiSend, FiMail } from 'react-icons/fi';
 import { TiSocialLinkedinCircular } from 'react-icons/ti';
+import { BsLinkedin } from 'react-icons/bs';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 
 const Links = ['academics', 'visualizations', 'projects'];
@@ -43,11 +44,21 @@ export default function NavBar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode, toggleColorMode } = useColorMode();
 
+    const linkedIn = (
+        <Link href="https://www.linkedin.com/in/marcell-borhi/">
+            <Tooltip hasArrow label='LinkedIn' bg='gray.300' color='black'>
+                <Button>
+                    <BsLinkedin size="1.5em" />
+                </Button>
+            </Tooltip>
+        </Link>
+    )
+
     const contactMe = (
         <Link href="https://www.linkedin.com/in/marcell-borhi/">
             <Tooltip hasArrow label='Contact Me' bg='gray.300' color='black'>
                 <Button>
-                    <FiSend size="1.5em" />
+                    <FiMail size="1.5em" />
                 </Button>
             </Tooltip>
         </Link>
@@ -71,15 +82,22 @@ export default function NavBar() {
         </Tooltip>
     );
 
-    const qlinks = [contactMe, gitHub, toggleColor];
+    const qlinks = [linkedIn, contactMe, gitHub, toggleColor];
 
     const quickLinks = (
         <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={3}>
                 <Link href="https://www.linkedin.com/in/marcell-borhi/">
+                    <Tooltip hasArrow label='LinkedIn' bg='gray.300' color='black'>
+                        <Button>
+                            <BsLinkedin size="1.5em" />
+                        </Button>
+                    </Tooltip>
+                </Link>
+                <Link href="https://www.linkedin.com/in/marcell-borhi/">
                     <Tooltip hasArrow label='Contact Me' bg='gray.300' color='black'>
                         <Button>
-                            <FiSend size="1.5em" />
+                            <FiMail size="1.5em" />
                         </Button>
                     </Tooltip>
                 </Link>
@@ -101,7 +119,7 @@ export default function NavBar() {
 
     return (
         <>
-            <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+            <Box bg={useColorModeValue('gray.50', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                     <IconButton
                         size={'md'}
@@ -138,17 +156,19 @@ export default function NavBar() {
                                 ))}
                             </Stack>
                         </Box>
-                        <Divider />
-                        <Container centerContent>
-                            <HStack spacing={1} align=''>
-                                {qlinks.map((q, i) => (
-                                    <Box key={i}>
-                                        {q}
-                                    </Box>
-                                ))}
-                            </HStack>
-                        </Container>
-                        <Divider />
+                        <Box display={{ md: 'none' }}>
+                            <Divider />
+                            <Container centerContent>
+                                <HStack spacing={1} align=''>
+                                    {qlinks.map((q, i) => (
+                                        <Box key={i}>
+                                            {q}
+                                        </Box>
+                                    ))}
+                                </HStack>
+                            </Container>
+                            <Divider />
+                        </Box>
                     </>
                 ) : null}
             </Box>

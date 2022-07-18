@@ -10,12 +10,14 @@ import {
     Icon,
     useColorModeValue,
     Box,
+    Link,
     Divider
 } from '@chakra-ui/react';
-import { IoTennisball } from 'react-icons/io5';
-import { SiJava, SiJavascript, SiPython, SiReact, SiNextdotjs } from 'react-icons/si';
-import { MdOutlineComputer } from 'react-icons/md'
-import { GiWeightLiftingUp, GiHiking } from 'react-icons/gi'
+import { IoTennisball, IoCodeSlashOutline } from 'react-icons/io5';
+import { SiJava, SiJavascript, SiPython, SiReact, SiNextdotjs, SiTypescript } from 'react-icons/si';
+import { MdOutlineComputer } from 'react-icons/md';
+import { GiWeightLiftingUp, GiHiking, GiDatabase } from 'react-icons/gi';
+import { FiServer } from 'react-icons/fi';
 import { ReactElement, useState } from 'react';
 import PictureModal from './PictureModal';
 import { saveAs } from 'file-saver';
@@ -34,6 +36,33 @@ interface FeatureProps {
 
 // Move to separate file
 const Feature = ({ text, icon, iconBg, roundness, desc }: FeatureProps) => {
+    const infos = [
+        {
+            icon: <Icon as={SiJavascript} color={'yellow.400'} w={5} h={5} />,
+            name: 'JavaScript'
+        },
+        {
+            icon: <Icon as={SiTypescript} color={'blue.400'} w={5} h={5} />,
+            name: 'TypeScript'
+        },
+        {
+            icon: <Icon as={SiJava} color={'orange.400'} w={5} h={5} />,
+            name: 'Java'
+        },
+        {
+            icon: <Icon as={SiPython} color={'facebook.500'} w={5} h={5} />,
+            name: 'Python'
+        },
+        {
+            icon: <Icon as={SiNextdotjs} color={'black.500'} w={5} h={5} />,
+            name: 'Next.js'
+        },
+        {
+            icon: <Icon as={SiReact} color={'blue.500'} w={5} h={5} />,
+            name: 'React'
+        },
+
+    ];
     return (
         <>
             <Stack direction={'row'} align={'center'}>
@@ -48,7 +77,12 @@ const Feature = ({ text, icon, iconBg, roundness, desc }: FeatureProps) => {
                 </Flex>
                 <Text fontWeight={600}>{text}</Text>
             </Stack>
-            <Text>{desc}</Text>
+            {/*<Text paddingTop={3}>
+                {infos.map((info, i) => (
+                    <> {info.icon} {info.name} </>
+                ))}
+                </Text>*/}
+            <Text fontWeight={500} paddingTop={3}>{desc}</Text>
         </>
 
     );
@@ -84,8 +118,7 @@ export default function SplitWithImage() {
 
     const [modalOpen, setModelOpen] = useState(false);
 
-    const descText = "This is something that I learned. I applied this in this way. Go to my projects section to see\
-    the work I did using this skill.";
+    const descText = "This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section";
 
     const handleModal = () => {
         setModelOpen(!modalOpen)
@@ -106,13 +139,7 @@ export default function SplitWithImage() {
 
     return (
         <Container maxW={'5xl'} py={12} >
-            <Box marginBottom={10}>
-                <Text fontWeight='thin' fontSize='4xl'>
-                    Hello! I'm
-                    { } <Text as='span' textDecoration='' fontWeight='light'>Marcell Borhi</Text>
-                    , a Computer Science major at Indiana University.
-                </Text>
-            </Box>
+
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <Stack spacing={4}>
                     {/*
@@ -131,12 +158,16 @@ export default function SplitWithImage() {
                     <Heading as='h1' fontSize='1.2em' fontWeight='semibold'>ABOUT ME</Heading>
                     <Text fontSize={'lg'}>
                         As a Computer Science major, I am specializing in Artifical Intelligence and graduating in Spring 2025.
-                        I began studying at IU in the Fall of 2021, and have only become more driven and passionate since. sed diam
-                        nonumy eirmod tempor invidunt ut laboreLorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        nonumy eirmod tempor invidunt ut labore
+                        I began studying at IU in the Fall of 2021, and have only become more driven and passionate since. Read
+                        about my skills and hobbies below. And make sure to check out my sorting { }
+                        <Link href='/visualizations' textDecoration='underline'>visualizations</Link>
+                        , my { }
+                        <Link href='academics' textDecoration='underline'>academics</Link> { }
+                        and my { }
+                        <Link href='projects' textDecoration='underline'>projects</Link>!
                     </Text>
                     <Divider color='blueviolet' />
-                    <Heading as='h2' fontSize='1.2em' fontWeight='semibold'>SKILLS</Heading>
+                    <Heading as='h2' fontSize='1.1em' fontWeight='semibold'>SKILLS</Heading>
                     <Stack
                         spacing={4}
                         divider={
@@ -144,20 +175,31 @@ export default function SplitWithImage() {
                                 borderColor={useColorModeValue('gray.100', 'gray.700')}
                             />
                         }>
+                        {/*
+                        <Feature
+                            icon={
+                                <Icon as={MdOutlineComputer} color={'black.500'} w={5} h={5} />
+                            }
+                            iconBg={useColorModeValue('gray.200', 'gray.900')}
+                            text={'Technical Skills'}
+                            roundness={'md'}
+                            desc={'Java'}
+                        />
+                        */}
                         <Feature
                             icon={
                                 <Icon as={SiJavascript} color={'yellow.500'} w={5} h={5} />
                             }
-                            iconBg={useColorModeValue('yellow.100', 'yellow.900')}
+                            iconBg={useColorModeValue('yellow.200', 'yellow.900')}
                             text={'JavaScript / Typescript'}
                             roundness={'sm'}
                             desc={descText}
                         />
                         <Feature
-                            icon={<Icon as={SiJava} color={'green.500'} w={5} h={5} />}
-                            iconBg={useColorModeValue('green.100', 'green.900')}
+                            icon={<Icon as={SiJava} color={'orange.300'} w={5} h={5} />}
+                            iconBg={useColorModeValue('gray.100', 'gray.700')}
                             text={'Java'}
-                            desc={descText}
+                            desc={'I used Java to develop my very simple Ray Tracer, as well as in my courses: Software Systems, Data Structures'}
                         />
                         <Feature
                             icon={
@@ -166,32 +208,34 @@ export default function SplitWithImage() {
                             iconBg={useColorModeValue('purple.100', 'purple.900')}
                             text={'Python'}
                             roundness={'md'}
-                            desc={descText}
+                            desc={'The first programming language I learned!'}
                         />
                         <Feature
                             icon={
-                                <Icon as={SiReact} color={'facebook.500'} w={5} h={5} />
-                            }
-                            iconBg={useColorModeValue('facebook.100', 'facebook.900')}
-                            text={'React'}
-                            desc={descText}
-                        />
-                        <Feature
-                            icon={
-                                <Icon as={SiNextdotjs} color={'black.500'} w={5} h={5} />
+                                <Icon as={MdOutlineComputer} color={'black.400'} w={5} h={5} />
                             }
                             iconBg={useColorModeValue('gray.200', 'gray.700')}
-                            text={'Next.js'}
-                            desc={descText}
-                        />
-                        <Feature
-                            icon={
-                                <Icon as={MdOutlineComputer} color={'black.500'} w={5} h={5} />
-                            }
-                            iconBg={useColorModeValue('gray.200', 'gray.700')}
-                            text={'Other Skills'}
+                            text={'Web Dev'}
                             roundness={'lg'}
-                            desc={"For the full list of all my skills please check out the Expereince section below"}
+                            desc={"Next.js, React.js, HTML, CSS"}
+                        />
+                        <Feature
+                            icon={
+                                <Icon as={FiServer} color={'green.500'} w={5} h={5} />
+                            }
+                            iconBg={useColorModeValue('gray.300', 'gray.700')}
+                            text={'Development Tools'}
+                            desc={'Git, Kubernetes, Docker, Vercel'}
+                            roundness={'md'}
+                        />
+                        <Feature
+                            icon={
+                                <Icon as={GiDatabase} color={'black.700'} w={5} h={5} />
+                            }
+                            iconBg={useColorModeValue('gray.200', 'gray.700')}
+                            text={'Database'}
+                            desc={'MongoDB, Redis, SQLite'}
+                            roundness={'xl'}
                         />
                     </Stack>
                     <Divider />
@@ -207,16 +251,16 @@ export default function SplitWithImage() {
                             icon={<Icon as={IoTennisball} color={'green.500'} w={5} h={5} />}
                             iconBg={useColorModeValue('green.100', 'green.900')}
                             text={'Tennis'}
-                            desc={descText}
+                            desc={'Played competitively until end of high school, now I\'m volunteer instructor, while still hitting for fun'}
                         />
                         <Feature
                             icon={
                                 <Icon as={GiHiking} color={'yellow.500'} w={5} h={5} />
                             }
-                            iconBg={useColorModeValue('yellow.100', 'yellow.900')}
+                            iconBg={useColorModeValue('yellow.200', 'yellow.900')}
                             text={'Hiking'}
                             roundness={'sm'}
-                            desc={descText}
+                            desc={'I love hiking with friends and family, but also ejnoy exploring on my own!'}
                         />
                         <Feature
                             icon={
@@ -224,7 +268,8 @@ export default function SplitWithImage() {
                             }
                             iconBg={useColorModeValue('purple.100', 'purple.900')}
                             text={'Weight Lifting'}
-                            desc={descText}
+                            desc={'I\'m super passtionate about being physically active and healthy. I haven\'t missed a workout in almost 3 years!'}
+                            roundness='lg'
                         />
                     </Stack>
                 </Stack>

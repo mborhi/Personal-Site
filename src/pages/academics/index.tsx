@@ -71,7 +71,7 @@ const Academics = ({ academicRecord }: Props) => {
     return (
         <>
             <NavBar />
-            <Container bg={useColorModeValue('gray.100', 'gray.900')} maxW="100%" py={12}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <Box>
                     <Heading as='h1'>Computer Science Bachelor's Degree</Heading>
                     <Flex>
