@@ -14,13 +14,19 @@ import {
     Divider
 } from '@chakra-ui/react';
 import { IoTennisball, IoCodeSlashOutline } from 'react-icons/io5';
-import { SiJava, SiJavascript, SiPython, SiReact, SiNextdotjs, SiTypescript } from 'react-icons/si';
+// import { SiJava, SiJavascript, SiPython, SiReact, SiNextdotjs, SiTypescript } from 'react-icons/si';
 import { MdOutlineComputer } from 'react-icons/md';
+import * as SiIcons from 'react-icons/si';
+import * as GiIcons from 'react-icons/gi';
+import * as IoIcons from 'react-icons/io5';
+import * as MdIcons from 'react-icons/md'
 import { GiWeightLiftingUp, GiHiking, GiDatabase } from 'react-icons/gi';
 import { FiServer } from 'react-icons/fi';
 import { ReactElement, useState } from 'react';
 import PictureModal from './PictureModal';
 import { saveAs } from 'file-saver';
+import { FeaturesData } from '../../interfaces';
+import { IconType } from 'react-icons/lib';
 
 
 // change this to FeatureInfo
@@ -36,33 +42,7 @@ interface FeatureProps {
 
 // Move to separate file
 const Feature = ({ text, icon, iconBg, roundness, desc }: FeatureProps) => {
-    const infos = [
-        {
-            icon: <Icon as={SiJavascript} color={'yellow.400'} w={5} h={5} />,
-            name: 'JavaScript'
-        },
-        {
-            icon: <Icon as={SiTypescript} color={'blue.400'} w={5} h={5} />,
-            name: 'TypeScript'
-        },
-        {
-            icon: <Icon as={SiJava} color={'orange.400'} w={5} h={5} />,
-            name: 'Java'
-        },
-        {
-            icon: <Icon as={SiPython} color={'facebook.500'} w={5} h={5} />,
-            name: 'Python'
-        },
-        {
-            icon: <Icon as={SiNextdotjs} color={'black.500'} w={5} h={5} />,
-            name: 'Next.js'
-        },
-        {
-            icon: <Icon as={SiReact} color={'blue.500'} w={5} h={5} />,
-            name: 'React'
-        },
 
-    ];
     return (
         <>
             <Stack direction={'row'} align={'center'}>
@@ -110,15 +90,26 @@ const Picture = ({ action }: PictureProps) => {
     )
 }
 
+interface Props {
+    content: FeaturesData[]
+}
 /**
  * Content on left with an image display on right.
  * Bootstrapped from ChakraUI Templates.
  */
-export default function SplitWithImage() {
+export default function SplitWithImage({ content }: Props) {
 
     const [modalOpen, setModelOpen] = useState(false);
 
-    const descText = "This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section";
+    const iconTypes = [SiIcons, GiIcons, IoIcons, MdIcons];
+
+    const resIcon = (iconName: string) => {
+        let icon;
+        iconTypes.forEach((i) => {
+            if (i[iconName] !== undefined) icon = i[iconName];
+        });
+        return icon;
+    }
 
     const handleModal = () => {
         setModelOpen(!modalOpen)
@@ -166,7 +157,34 @@ export default function SplitWithImage() {
                         and my { }
                         <Link href='projects' textDecoration='underline'>projects</Link>!
                     </Text>
-                    <Divider color='blueviolet' />
+                    {/*<Divider color='blueviolet' /><Heading as='h2' fontSize='1.1em' fontWeight='semibold'>SKILLS</Heading>*/}
+                    {content.map((data) => (
+                        <Stack
+                            spacing={4}
+                            divider={
+                                <StackDivider
+                                    borderColor={useColorModeValue('gray.100', 'gray.700')}
+                                />
+                            }
+                            key={data.title}>
+                            <Heading as='h2' fontSize='1.1em' fontWeight='semibold'>{data.title}</Heading>
+                            {data.features.map((feature, i) => (
+
+                                <Feature
+                                    icon={
+                                        <Icon as={resIcon(feature.icon)} color={feature.color} w={5} h={5} />
+                                    }
+                                    iconBg={useColorModeValue(feature.iconBg[0], feature.iconBg[1])}
+                                    text={feature.name}
+                                    roundness={feature.roundness}
+                                    desc={feature.desc}
+                                    key={feature.name}
+                                />
+
+                            ))}
+                        </Stack>
+                    ))}
+                    {/*}
                     <Heading as='h2' fontSize='1.1em' fontWeight='semibold'>SKILLS</Heading>
                     <Stack
                         spacing={4}
@@ -175,17 +193,7 @@ export default function SplitWithImage() {
                                 borderColor={useColorModeValue('gray.100', 'gray.700')}
                             />
                         }>
-                        {/*
-                        <Feature
-                            icon={
-                                <Icon as={MdOutlineComputer} color={'black.500'} w={5} h={5} />
-                            }
-                            iconBg={useColorModeValue('gray.200', 'gray.900')}
-                            text={'Technical Skills'}
-                            roundness={'md'}
-                            desc={'Java'}
-                        />
-                        */}
+                        
                         <Feature
                             icon={
                                 <Icon as={SiJavascript} color={'yellow.500'} w={5} h={5} />
@@ -272,6 +280,7 @@ export default function SplitWithImage() {
                             roundness='lg'
                         />
                     </Stack>
+                        */}
                 </Stack>
                 <Flex>
                     <Picture action={handleModal} />
