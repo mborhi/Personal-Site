@@ -10,7 +10,6 @@ import {
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useEffect, useRef, useState } from "react";
 import NavBar from "../../components/NavBar";
-import VisualizeSorting from "../../components/VisualizeSorting";
 import { selectionSort, stepBubbleSort, stepInsertionSort } from "../../../utils/sort";
 import { Button, ButtonGroup } from "@chakra-ui/button";
 import SortDisplay from "../../components/SortDisplay";
@@ -37,7 +36,6 @@ interface SpeedOption {
 }
 
 const Visualizations = () => {
-    // let arr = Array.from({ length: 40 }, () => Math.floor(Math.random() * 500));
 
     const [nums, setNums] = useState(Array.from({ length: 20 }, () => Math.floor(Math.random() * 100)));
     const [arrSteps, setArrSteps] = useState([]); // a stack of number[] 
@@ -47,9 +45,12 @@ const Visualizations = () => {
     // sorting options
     const [sortOption, setSortOption] = useState<SortOption>({ value: stepBubbleSort, name: "Bubble Sort" });
     const [speed, setSpeed] = useState<SpeedOption>({ value: 1, name: "Very Fast" });
-
+    // timer
     const timerRef = useRef(null);
 
+    /**
+     * Pauses the visualization
+     */
     const toggleSort = () => {
         setI(0);
         setJ(0);
@@ -100,6 +101,35 @@ const Visualizations = () => {
         return arr;
     }
 
+    const allSortOptions: SortOption[] = [
+        { value: stepBubbleSort, name: "Bubble Sort" },
+        { value: stepInsertionSort, name: "Insertion Sort" },
+    ];
+
+    const allSpeedOptions: SpeedOption[] = [
+        { value: 1, name: "Very Fast" },
+        { value: 10, name: "Fast" },
+        { value: 100, name: "Medium" },
+        { value: 200, name: "Slow" },
+        { value: 500, name: "Very Slow" },
+    ];
+
+    /**
+     * Changes the sortOption to the given values
+     * @param {SortOption} param0 the new sortOption values
+     */
+    const changeSortOption = ({ name, value }) => {
+        setSortOption({ value: value, name: name });
+    }
+
+    /**
+     * Changes the speed state to the given values
+     * @param {SpeedOption} param0 the new speed state values
+     */
+    const changeSpeedOption = ({ name, value }) => {
+        setSpeed({ value: value, name: name });
+    }
+
     useEffect(() => {
         if (!paused) {
             clearTimeout(timerRef.current);
@@ -114,32 +144,11 @@ const Visualizations = () => {
         }
     }, [i, j, paused]);
 
-    const allSortOptions: SortOption[] = [
-        { value: stepBubbleSort, name: "Bubble Sort" },
-        { value: stepInsertionSort, name: "Insertion Sort" },
-    ];
-
-    const allSpeedOptions: SpeedOption[] = [
-        { value: 1, name: "Very Fast" },
-        { value: 10, name: "Fast" },
-        { value: 100, name: "Medium" },
-        { value: 200, name: "Slow" },
-        { value: 500, name: "Very Slow" },
-    ];
-
-    const changeSortOption = ({ name, value }) => {
-        setSortOption({ value: value, name: name });
-    }
-
-    const changeSpeedOption = ({ name, value }) => {
-        setSpeed({ value: value, name: name });
-    }
-
     return (
         <>
             <NavBar />
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
-                <Box textAlign='center'>
+                <Box >
                     <Heading>Visualizations</Heading>
                 </Box>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} paddingTop={10}>
@@ -152,7 +161,7 @@ const Visualizations = () => {
                     </GridItem>
                     <GridItem>
                         <Container centerContent>
-                            <Text>Select a sorting algorithm and speed</Text>
+                            <Text fontWeight='medium'>Select a sorting algorithm and speed</Text>
                             <SimpleGrid alignItems={'center'} columns={{ base: 1, md: 2 }} spacing={3}>
                                 <GridItem>
                                     <MenuOptions selector={(s) => changeSortOption(s)} options={allSortOptions} selected={sortOption.name} comingSoon={true} />
@@ -183,7 +192,7 @@ const Visualizations = () => {
                         </VStack>
                     </GridItem>
                     <GridItem>
-                        <SortDisplay nums={nums} />
+                        <SortDisplay nums={nums} i={i} j={j} />
                     </GridItem>
                 </SimpleGrid>
             </Container>

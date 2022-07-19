@@ -44,8 +44,10 @@ const Picture = ({ action }: PictureProps) => {
             onClick={() => action()}
             rounded={'md'}
             alt={'feature image'}
-            src={
-                'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg'
+            src={useColorModeValue(
+                'https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg', // light mode
+                'https://images.resumgo.com/2019/08/DIONA-Free-Resume-Template.png' // dark mode
+            )
             }
             objectFit={'cover'}
         />
@@ -87,7 +89,7 @@ export default function SplitWithImage({ content }: Props) {
         try {
             let isFileSaverSupported = !!new Blob;
             if (isFileSaverSupported) {
-                // download the image
+                // download the image (light mode resume)
                 saveAs('https://coda.newjobs.com/api/imagesproxy/ms/seo-media/us/resume-images/it-developer-experienced.jpg', name);
             }
         } catch (e) {

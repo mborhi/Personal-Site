@@ -12,13 +12,6 @@ import {
     Link,
 } from '@chakra-ui/react';
 
-
-const loader = ({ src }) => {
-    const relativeSrc = (src) => src.split("/").pop();
-
-    return `http://localhost:3000/public/images/${relativeSrc(src)}`;
-}
-
 export default function blogPostWithImage({ name, description, image, tech, date, id }) {
     const technologies = tech.split(',');
 

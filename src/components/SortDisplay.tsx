@@ -3,9 +3,11 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 
 interface Props {
     nums: number[]
+    i: number
+    j: number
 }
 
-const SortDisplay = ({ nums }: Props) => {
+const SortDisplay = ({ nums, i, j }: Props) => {
 
     return (
 
@@ -19,14 +21,14 @@ const SortDisplay = ({ nums }: Props) => {
             overflow={"auto"}
             flex="1"
         >
-            {nums.map((num, i) => {
+            {nums.map((num, idx) => {
                 return (
                     <Box
                         display={"flex"}
                         justifyContent="flex-end"
                         textAlign="center"
                         flexDirection="column"
-                        key={i}
+                        key={idx}
                     >
                         <Box
                             roundedTop={"xs"}
@@ -37,7 +39,8 @@ const SortDisplay = ({ nums }: Props) => {
                         ></Box>
                     </Box>
                 );
-            })}
+            }
+            )}
         </Box>
 
     )

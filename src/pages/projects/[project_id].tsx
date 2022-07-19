@@ -29,13 +29,6 @@ export async function getStaticPaths() {
 
 const Project = ({ projectData }) => {
 
-    const pagePath = [
-        {
-            name: 'Projects',
-            route: 'http://localhost:3000/projects'
-        },
-    ];
-
     return (
         <>
             <NavBar />

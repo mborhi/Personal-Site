@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
-import { Heading, Text, Stack, Box, SimpleGrid, Container, Flex, Spacer } from "@chakra-ui/layout";
+import { Heading, Text, Stack, Box, SimpleGrid, Container, Flex, Spacer, Link } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
@@ -74,10 +74,17 @@ const Academics = ({ academicRecord }: Props) => {
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <Box>
                     <Heading as='h1'>Computer Science Bachelor's Degree</Heading>
-                    <Flex>
+                    <Flex paddingTop={5} paddingBottom={2}>
                         <Box>
                             <Text fontSize='xl'>
-                                My progress towards a Computer Science Bachelor's Degree at Indiana University Bloomington
+                                My progress towards a Computer Science Bachelor's Degree at { }
+                                <Text as={'span'} textDecoration='underline'>
+                                    <Link href="https://luddy.indiana.edu/">Indiana University Bloomington.</Link>
+                                </Text>
+                                { }  { }
+                            </Text>
+                            <Text fontSize='xl'>On track to graduate in { }
+                                <Text as={'span'} textDecoration='underline'>May, 2025.</Text>
                             </Text>
                         </Box>
                         <Spacer />
@@ -92,19 +99,23 @@ const Academics = ({ academicRecord }: Props) => {
                 <CheckboxGroup>
                     <Stack spacing={[1, 5]} direction={['column', 'row']}>
                         <Checkbox name="majorOnly" onChange={(e) => chooseSelector(e.target.name, e.target.checked)}>Show only major classes</Checkbox>
-                    </Stack>
-                </CheckboxGroup>
-                <CheckboxGroup>
-                    <Stack spacing={[1, 5]} direction={['column', 'row']}>
                         <Checkbox name="highGradesOnly" onChange={(e) => chooseSelector(e.target.name, e.target.checked)}>Show only high grades</Checkbox>
                     </Stack>
                 </CheckboxGroup>
-                <Heading>Classes</Heading>
-                <Stack>
-                    {academicRecord.map((record) => (
-                        <TableDisplay title={record.title} data={record.data} options={selectors} key={record.title} />
-                    ))}
-                </Stack>
+                {/*
+                <CheckboxGroup>
+                    <Stack spacing={[1, 5]} direction={['column', 'row']}>
+                    </Stack>
+                </CheckboxGroup>
+                */}
+                <Box padding={2}>
+                    <Heading paddingTop={2}>Classes</Heading>
+                    <Stack paddingTop={5}>
+                        {academicRecord.map((record) => (
+                            <TableDisplay title={record.title} data={record.data} options={selectors} key={record.title} />
+                        ))}
+                    </Stack>
+                </Box>
             </Container>
             <Footer />
         </>

@@ -6,6 +6,10 @@ import html from 'remark-html';
 
 const projectsDirectory = path.join(process.cwd(), '/projects');
 
+/**
+ * Gets the list of all the markdown data of markdown files in ./projects directory
+ * @returns the list of markdown data
+ */
 export const getAllProjectsData = () => {
     const projectNames = fs.readdirSync(projectsDirectory);
     const allProjectsData = projectNames.map((project) => {
@@ -15,7 +19,6 @@ export const getAllProjectsData = () => {
         const fileContents = fs.readFileSync(fullPath, 'utf8');
 
         const matterResult = matter(fileContents);
-        console.log(matterResult);
 
         return {
             id,
@@ -23,6 +26,7 @@ export const getAllProjectsData = () => {
         };
     });
 
+    // sort the markdown data by date
     return allProjectsData.sort((a: any, b: any) => {
         if (a.date < b.date) {
             return 1;
@@ -34,6 +38,10 @@ export const getAllProjectsData = () => {
     });
 }
 
+/**
+ * Gets a list of all project_ids from makrdown files in the ./projects directory
+ * @returns list of all project_ids
+ */
 export const getAllProjectIds = () => {
     const fileNames = fs.readdirSync(projectsDirectory);
     return fileNames.map((fileName) => {
@@ -45,6 +53,11 @@ export const getAllProjectIds = () => {
     });
 }
 
+/**
+ * Returns the data of the given project specified by its id
+ * @param project_id the id of the project to get data
+ * @returns the projects data
+ */
 export const getProjectData = async (project_id) => {
     const fullPath = path.join(projectsDirectory, `${project_id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
