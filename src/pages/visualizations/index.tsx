@@ -5,6 +5,7 @@ import {
     SliderFilledTrack,
     SliderThumb,
     Text,
+    Flex,
     SliderMark,
 } from '@chakra-ui/react'
 import { useColorModeValue } from "@chakra-ui/color-mode";
@@ -15,6 +16,19 @@ import { Button, ButtonGroup } from "@chakra-ui/button";
 import SortDisplay from "../../components/SortDisplay";
 import Footer from "../../components/Footer";
 import MenuOptions from "../../components/MenuOptions";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { getAllVisualizationContent, getVisualizationContent, VisualizationContent } from "../../../utils/visualization";
+
+
+export const getStaticProps = async () => {
+    const allContent = await getAllVisualizationContent();
+
+    return {
+        props: {
+            visContent: allContent
+        }
+    }
+}
 
 interface StepAlgoParams {
     nums: number[]
@@ -27,7 +41,7 @@ interface StepAlgoParams {
 
 interface SortOption {
     value: (vals: StepAlgoParams) => void
-    name: string
+    name: string,
 }
 
 interface SpeedOption {
@@ -35,7 +49,11 @@ interface SpeedOption {
     name: string
 }
 
-const Visualizations = () => {
+interface Props {
+    visContent: VisualizationContent[]
+}
+
+const Visualizations = ({ visContent }: Props) => {
 
     const [nums, setNums] = useState(Array.from({ length: 20 }, () => Math.floor(Math.random() * 100)));
     const [arrSteps, setArrSteps] = useState([]); // a stack of number[] 
@@ -118,7 +136,8 @@ const Visualizations = () => {
      * Changes the sortOption to the given values
      * @param {SortOption} param0 the new sortOption values
      */
-    const changeSortOption = ({ name, value }) => {
+    const changeSortOption = async ({ name, value }) => {
+        // update the sortAlgoContent
         setSortOption({ value: value, name: name });
     }
 
@@ -128,6 +147,21 @@ const Visualizations = () => {
      */
     const changeSpeedOption = ({ name, value }) => {
         setSpeed({ value: value, name: name });
+    }
+
+    /**
+     * Returns the content of the currently selected sorting algorithm as a stirng
+     * @returns {string} the content of the sorting algo explanation file
+     */
+    const getSortAlgoContent = (): string => {
+        const currentAlgoId = sortOption.name.replace(/\s/g, '');
+        let algoContent = "";
+        visContent.forEach((content: VisualizationContent) => {
+            if (content.algorithm_id === currentAlgoId) {
+                algoContent = content.content;
+            }
+        });
+        return algoContent;
     }
 
     useEffect(() => {
@@ -195,6 +229,9 @@ const Visualizations = () => {
                         <SortDisplay nums={nums} i={i} j={j} />
                     </GridItem>
                 </SimpleGrid>
+                <Box textStyle='mainContent'>
+                    <ReactMarkdown children={getSortAlgoContent()}></ReactMarkdown>
+                </Box>
             </Container>
             <Footer />
         </>
