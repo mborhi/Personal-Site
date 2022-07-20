@@ -34,28 +34,28 @@ const theme = extendTheme({
   textStyles: {
     mainContent: {
       h1: {
-        fontSize: ['2rem', '3.5rem'],
+        fontSize: ['2rem', '3rem'],
         fontWeight: 'bold',
       },
       h2: {
-        fontSize: ['1.75rem', '2.75rem'],
+        fontSize: ['1.75rem', '2.5rem'],
         fontWeight: 'bold',
       },
       h3: {
-        fontSize: ['1.5rem', '2.7rem'],
+        fontSize: ['1.25rem', '2.25rem'],
         fontWeight: 'bold',
       },
       ul: {
-        fontSize: ['1rem', '1.4rem'],
+        fontSize: ['0.75rem', '1.2rem'],
         fontWeight: 'normal',
         listStyleType: 'none'
       },
       li: {
-        fontSize: ['1rem', '1.4rem'],
+        fontSize: ['0.75rem', '1.2rem'],
         fontWeight: 'normal',
       },
       p: {
-        fontSize: ['1rem', '1.4rem'],
+        fontSize: ['0.75rem', '1.2rem'],
         fontWeight: 'normal',
       }
     },

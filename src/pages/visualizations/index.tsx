@@ -37,6 +37,8 @@ interface StepAlgoParams {
     j: number
     setI: (num: number) => void
     setJ: (num: number) => void
+    key?: number
+    setKey?: (num: number) => void
 }
 
 interface SortOption {
@@ -55,16 +57,32 @@ interface Props {
 
 const Visualizations = ({ visContent }: Props) => {
 
-    const [nums, setNums] = useState(Array.from({ length: 20 }, () => Math.floor(Math.random() * 100)));
+    const [nums, setNums] = useState(Array.from({ length: 30 }, () => Math.floor(Math.random() * 100)));
     const [arrSteps, setArrSteps] = useState([]); // a stack of number[] 
     const [paused, setPaused] = useState(true);
-    const [i, setI] = useState(-1);
-    const [j, setJ] = useState(-1);
+    const [done, setDone] = useState(false);
+    const [i, setI] = useState(0);
+    const [j, setJ] = useState(0);
+    // insertion sort key
+    const [key, setKey] = useState(nums[1]);
     // sorting options
     const [sortOption, setSortOption] = useState<SortOption>({ value: stepBubbleSort, name: "Bubble Sort" });
     const [speed, setSpeed] = useState<SpeedOption>({ value: 1, name: "Very Fast" });
     // timer
     const timerRef = useRef(null);
+
+    const allSortOptions: SortOption[] = [
+        { value: stepBubbleSort, name: "Bubble Sort" },
+        { value: stepInsertionSort, name: "Insertion Sort" },
+    ];
+
+    const allSpeedOptions: SpeedOption[] = [
+        { value: 1, name: "Very Fast" },
+        { value: 10, name: "Fast" },
+        { value: 100, name: "Medium" },
+        { value: 200, name: "Slow" },
+        { value: 500, name: "Very Slow" },
+    ];
 
     /**
      * Pauses the visualization
@@ -109,28 +127,22 @@ const Visualizations = ({ visContent }: Props) => {
      * @returns the generated array
      */
     const generateArr = (length: number, range: number): number[] => {
+        // generate new arr
         let arr: number[] = [];
         for (let i = 0; i < length; i++) {
             arr = [...arr, Math.floor(Math.random() * 110)];
         }
+        // reset
         setI(0);
         setJ(0);
         setNums(arr);
+        // for insertion sort
+        setKey(arr[1]);
+        setDone(false);
+        // clear the old stack of arr steps
+        setArrSteps([]);
         return arr;
     }
-
-    const allSortOptions: SortOption[] = [
-        { value: stepBubbleSort, name: "Bubble Sort" },
-        { value: stepInsertionSort, name: "Insertion Sort" },
-    ];
-
-    const allSpeedOptions: SpeedOption[] = [
-        { value: 1, name: "Very Fast" },
-        { value: 10, name: "Fast" },
-        { value: 100, name: "Medium" },
-        { value: 200, name: "Slow" },
-        { value: 500, name: "Very Slow" },
-    ];
 
     /**
      * Changes the sortOption to the given values
@@ -169,14 +181,18 @@ const Visualizations = ({ visContent }: Props) => {
             clearTimeout(timerRef.current);
             timerRef.current = setTimeout(() => {
                 let currSteps = [...arrSteps];
-                stepBubbleSort({ nums, setNums, i, j, setI, setJ });
-                if (nums !== currSteps[currSteps.length - 1]) {
+                if (sortOption.name === "Bubble Sort") {
+                    stepBubbleSort({ nums, setNums, i, j, setI, setJ });
+                } else {
+                    stepInsertionSort({ nums, setNums, i, j, setI, setJ, key, setKey, setDone });
+                }
+                if (nums !== currSteps[currSteps.length - 1] || !done) {
                     currSteps.push(nums);
                     setArrSteps(currSteps);
                 }
             }, speed.value);
         }
-    }, [i, j, paused]);
+    }, [i, j, paused, done]);
 
     return (
         <>
@@ -212,7 +228,7 @@ const Visualizations = ({ visContent }: Props) => {
                         <VStack>
                             <Text fontWeight='bold'>This is a visualization for {sortOption.name}</Text>
                             <Heading as='h5' size='sm'>Array Size:</Heading>
-                            <Slider defaultValue={50} min={10} max={110} onChange={(val) => generateArr(val, val)}>
+                            <Slider defaultValue={30} min={10} max={110} onChange={(val) => generateArr(val, val)}>
                                 <SliderTrack>
                                     <SliderFilledTrack />
                                 </SliderTrack>
@@ -226,10 +242,10 @@ const Visualizations = ({ visContent }: Props) => {
                         </VStack>
                     </GridItem>
                     <GridItem>
-                        <SortDisplay nums={nums} i={i} j={j} />
+                        <SortDisplay nums={nums} />
                     </GridItem>
                 </SimpleGrid>
-                <Box textStyle='mainContent'>
+                <Box textStyle='mainContent' padding={5}>
                     <ReactMarkdown children={getSortAlgoContent()}></ReactMarkdown>
                 </Box>
             </Container>

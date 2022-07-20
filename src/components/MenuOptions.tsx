@@ -26,7 +26,6 @@ interface Props {
 const MenuOptions = ({ selector, options, selected, comingSoon }: Props) => {
 
     const changeSelection = (change) => {
-        console.log('change event: ', change.target);
         const value = change.target.value;
         const name = change.target.name;
         selector({ name: name, value: value });

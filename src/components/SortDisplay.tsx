@@ -3,11 +3,9 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 
 interface Props {
     nums: number[]
-    i: number
-    j: number
 }
 
-const SortDisplay = ({ nums, i, j }: Props) => {
+const SortDisplay = ({ nums }: Props) => {
 
     return (
 
