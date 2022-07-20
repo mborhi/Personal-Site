@@ -22,25 +22,30 @@ export const stepBubbleSort = ({ nums, setNums, i, j, setI, setJ }) => {
     }
 }
 
-// start from i = 1
-export const stepInsertionSort = ({ nums, setNums, i, setI, j, setJ }) => {
+/**
+ * Makes one step in the insertion sort algorithm
+ * Used to visualize insertion sort animation
+ */
+export const stepInsertionSort = ({ nums, setNums, i, setI, j, setJ, key, setKey }) => {
     let arr = [...nums];
     const size = nums.length;
-    let key = arr[i];
 
-    if (j === -1 && key < arr[j]) {
+    if (j === -1 || key > arr[j]) { // not end of while loop
         arr[j + 1] = key;
         setNums(arr);
         setI(i + 1);
         setJ(i); // curr i - 1
+        setKey(nums[i + 1]); // value at the new pos of i (this value shouldn't have been modified in any way)
     }
 
-    if (i + 1 !== size) {
+    else if (i !== size) { // not end of for loop
         // j passed as i - 1
         // make one swap
         if (key < arr[j]) {
             // swap
             arr[j + 1] = arr[j];
+            setJ(j - 1);
+            setNums(arr);
         } else {
             // decrement j
             setJ(j - 1);
