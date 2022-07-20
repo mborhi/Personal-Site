@@ -61,6 +61,33 @@ describe('Test Insertion Sort', () => {
     const setKey = (val: number) => { key = val; }
     const setNums = (vals: number[]) => { nums = vals; }
 
+    it('correctly sorts array with many duplicates', () => {
+        nums = [19, 16, 5, 19, 5, 80, 78, 49, 87, 87, 19, 5];
+        const sorted = nums.sort((a, b) => a - b);
+        i = 0;
+        j = 0;
+        key = nums[i];
+        // setup while loop to mock useEffect
+        while (i < nums.length) {
+            stepInsertionSort({ nums, setNums, i, j, setI, setJ, key, setKey });
+        }
+        expect(nums).toEqual(sorted);
+
+    })
+
+    it('correctly sorts large array of numbers', () => {
+        nums = Array.from({ length: 100 }, () => Math.floor(Math.random() * 100));
+        const sorted = nums.sort((a, b) => a - b);
+        i = 0;
+        j = 0;
+        key = nums[i];
+        // setup while loop to mock useEffect
+        while (i < nums.length) {
+            stepInsertionSort({ nums, setNums, i, j, setI, setJ, key, setKey });
+        }
+        expect(nums).toEqual(sorted);
+    });
+
     it('correctly sorts array of numbers', () => {
         nums = [9, 3, 7, 4, 6];
         i = 1;
