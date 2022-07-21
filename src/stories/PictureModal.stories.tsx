@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Card from '../components/Card';
+import PictureModal from '../components/PictureModal';
 
 //👇 This default export determines where your story goes in the story list
 export default {
@@ -8,20 +8,18 @@ export default {
     * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
     * to learn how to generate automatic titles
     */
-    title: 'Card',
-    component: Card,
-} as ComponentMeta<typeof Card>;
+    title: 'Picture Modal',
+    component: PictureModal,
+} as ComponentMeta<typeof PictureModal>;
 
 //👇 We create a “template” of how args map to rendering
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+const Template: ComponentStory<typeof PictureModal> = (args) => <PictureModal {...args} />;
 
 export const Primary = Template.bind({});
 
 Primary.args = {
-    name: "Example Name",
-    description: "This is an example project description",
-    image: "/images/profile.jpeg",
-    tech: "React.js, Next.js",
-    date: "2022-06-14",
-    id: "example-project"
+    title: "Example Title",
+    image: "/image/profile.jpeg",
+    open: true,
+    handleModal: () => null,
 };
