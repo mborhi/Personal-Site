@@ -12,7 +12,16 @@ import {
     Link,
 } from '@chakra-ui/react';
 
-export default function blogPostWithImage({ name, description, image, tech, date, id }) {
+interface Props {
+    name: string,
+    description: string,
+    image: string,
+    tech: string,
+    date: string,
+    id: string
+}
+
+export default function Card({ name, description, image, tech, date, id }: Props) {
     const technologies = tech.split(',');
 
     const TagDisplay = ({ items }) => {
