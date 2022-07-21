@@ -1,6 +1,21 @@
-import { Dispatch, SetStateAction } from "react";
+export interface StepAlgoParams {
+    nums: number[]
+    setNums: (nums: number[]) => void
+    i: number
+    j: number
+    setI: (num: number) => void
+    setJ: (num: number) => void
+    key?: number
+    setKey?: (num: number) => void
+    setDone?: (b: boolean) => void
+}
 
-export const stepBubbleSort = ({ nums, setNums, i, j, setI, setJ }) => {
+/**
+ * Makes one step in the bubble sort algorithm based on the given params
+ * Used to visualize bubble sort animation
+ * @param {StepAlgoParams} param0
+ */
+export const stepBubbleSort = ({ nums, setNums, i, j, setI, setJ }: StepAlgoParams) => {
     let dataArray = [...nums];
     const size = nums.length;
     let swap = dataArray[j];
@@ -23,10 +38,11 @@ export const stepBubbleSort = ({ nums, setNums, i, j, setI, setJ }) => {
 }
 
 /**
- * Makes one step in the insertion sort algorithm
+ * Makes one step in the insertion sort algorithm based on the given params
  * Used to visualize insertion sort animation
+ * @param {StepAlgoParams} param0
  */
-export const stepInsertionSort = ({ nums, setNums, i, setI, j, setJ, key, setKey, setDone = (b: boolean) => null }) => {
+export const stepInsertionSort = ({ nums, setNums, i, setI, j, setJ, key, setKey, setDone = (b: boolean) => null }: StepAlgoParams) => {
     let arr = [...nums];
     const size = nums.length;
 
