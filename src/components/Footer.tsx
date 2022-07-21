@@ -66,7 +66,7 @@ const Footer = () => {
           <SocialButton label={'Github'} href={'https://github.com/mborhi'}>
             <FaGithub />
           </SocialButton>
-          <SocialButton label={'Contact'} href={'#'}>
+          <SocialButton label={'Contact'} href={'mailto:mborhi@iu.edu'}>
             <FiMail />
           </SocialButton>
           <SocialButton label={'LinkedIn'} href={'https://www.linkedin.com/in/marcell-borhi/'}>

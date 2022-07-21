@@ -1,6 +1,8 @@
+### Algorithm Details
 Insertion sort is a comparison based algorithm. It works by repeatedly inserting an element into the sorted part of the array. The **Time Complexity** is O(N^2), where N is the size of the array. The **Space Complexity** is O(1). While the time complexity of the algorithm is bad, because it only uses constant space, Insertion Sort can be a good option to use in specific cases. For example, if the number of elements, N, is low and low amount of storage must be used. Given these paramaters, insertion sort may be more optimal than a recursive implementation of Merge Sort, since Merge Sort will use more space due to the recursion. It would be a bad idea to use insertion sort when the number of elements is large or unknown.
 
 **Implementation**
+Below is the JavaScript implementation of Insertion Sort.
 
 ```
 function bubbleSort( arr, n) { 
