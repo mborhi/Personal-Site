@@ -11,7 +11,7 @@ import {
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useEffect, useRef, useState } from "react";
 import NavBar from "../../components/NavBar";
-import { selectionSort, stepBubbleSort, stepInsertionSort } from "../../../utils/sort";
+import { StepAlgoParams, stepBubbleSort, stepInsertionSort } from "../../../utils/sort";
 import { Button, ButtonGroup } from "@chakra-ui/button";
 import SortDisplay from "../../components/SortDisplay";
 import Footer from "../../components/Footer";
@@ -30,16 +30,6 @@ export const getStaticProps = async () => {
     }
 }
 
-interface StepAlgoParams {
-    nums: number[]
-    setNums: (nums: number[]) => void
-    i: number
-    j: number
-    setI: (num: number) => void
-    setJ: (num: number) => void
-    key?: number
-    setKey?: (num: number) => void
-}
 
 interface SortOption {
     value: (vals: StepAlgoParams) => void
@@ -71,17 +61,20 @@ const Visualizations = ({ visContent }: Props) => {
     // timer
     const timerRef = useRef(null);
 
+
+    // List of available SortOptions
     const allSortOptions: SortOption[] = [
         { value: stepBubbleSort, name: "Bubble Sort" },
         { value: stepInsertionSort, name: "Insertion Sort" },
     ];
 
+    // List of available SpeedOptions
     const allSpeedOptions: SpeedOption[] = [
         { value: 1, name: "Very Fast" },
         { value: 10, name: "Fast" },
-        { value: 100, name: "Medium" },
-        { value: 200, name: "Slow" },
-        { value: 500, name: "Very Slow" },
+        { value: 30, name: "Medium" },
+        { value: 100, name: "Slow" },
+        { value: 200, name: "Very Slow" },
     ];
 
     /**
@@ -141,6 +134,8 @@ const Visualizations = ({ visContent }: Props) => {
         setDone(false);
         // clear the old stack of arr steps
         setArrSteps([]);
+        // pause so animation doesn't start abruptly
+        setPaused(true);
         return arr;
     }
 
@@ -227,6 +222,7 @@ const Visualizations = ({ visContent }: Props) => {
                     <GridItem>
                         <VStack>
                             <Text fontWeight='bold'>This is a visualization for {sortOption.name}</Text>
+                            <Button onClick={() => generateArr(nums.length, nums.length)}>Reset Array</Button>
                             <Heading as='h5' size='sm'>Array Size:</Heading>
                             <Slider defaultValue={30} min={10} max={110} onChange={(val) => generateArr(val, val)}>
                                 <SliderTrack>
