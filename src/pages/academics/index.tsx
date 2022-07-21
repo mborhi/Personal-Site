@@ -5,6 +5,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import TableDisplay from "../../components/TableDisplay";
+import Header from "../../components/Header";;
 import { AcademicData, AcademicRecord } from "../../../interfaces";
 import { academicRecord } from "../../../academics";
 
@@ -70,6 +71,7 @@ const Academics = ({ academicRecord }: Props) => {
 
     return (
         <>
+            <Header title='Academics' />
             <NavBar />
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <Box>

@@ -7,9 +7,9 @@ import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import { BiArrowBack } from 'react-icons/bi';
 import { HStack } from "@chakra-ui/react";
+import Header from "../../components/Header";
 
 export const getStaticProps = async ({ params }) => {
-    // call an external API endpoint to get posts
     const projectData = await getProjectData(params.project_id);
     return {
         props: {
@@ -26,11 +26,15 @@ export async function getStaticPaths() {
     }
 }
 
+interface Props {
+
+}
 
 const Project = ({ projectData }) => {
 
     return (
         <>
+            <Header title={projectData.name} />
             <NavBar />
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <HStack marginBottom={2}>

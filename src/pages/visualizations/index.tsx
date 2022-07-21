@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react'
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useEffect, useRef, useState } from "react";
+import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import { StepAlgoParams, stepBubbleSort, stepInsertionSort } from "../../../utils/sort";
 import { Button, ButtonGroup } from "@chakra-ui/button";
@@ -191,6 +192,7 @@ const Visualizations = ({ visContent }: Props) => {
 
     return (
         <>
+            <Header title='Visualizations' />
             <NavBar />
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <Box >

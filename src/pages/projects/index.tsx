@@ -5,6 +5,7 @@ import { getAllProjectsData } from "../../../utils/projects";
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
 import NavBar from "../../components/NavBar";
+import Header from "../../components/Header";
 
 export const getStaticProps = async () => {
     const projects = getAllProjectsData();
@@ -18,6 +19,7 @@ export const getStaticProps = async () => {
 const Projects = ({ projects }) => {
     return (
         <>
+            <Header title='Projects' />
             <NavBar />
             <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
                 <Heading>Projects</Heading>

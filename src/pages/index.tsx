@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import { Box, Container, Text } from '@chakra-ui/layout';
 import { useColorModeValue } from '@chakra-ui/react';
 import { loadFeaturesFromFile } from '../../utils/features';
+import Header from '../components/Header';
 
 export const getStaticProps = async () => {
   const features = loadFeaturesFromFile("features.txt");
@@ -17,6 +18,7 @@ export const getStaticProps = async () => {
 const Index = ({ content }) => {
   return (
     <>
+      <Header title='Home' />
       <NavBar />
       <Box bg={useColorModeValue('gray.50', 'gray.900')} paddingTop={5}>
         <Container>
