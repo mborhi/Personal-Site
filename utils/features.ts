@@ -13,6 +13,16 @@ const descRE = /^\s*desc:(?=$|[\s",'`()[\]{}|;#])/;
 const roundnessRE = /^\s*roundness:(?=$|[\s",'`()[\]{}|;#])/;
 const featureRE = /.*/;
 
+interface ParseContents<Type> {
+    contents: string
+    info: Type
+}
+
+/**
+ * Loads all the features data from the specified file inside the main_content directory
+ * @param fileName file to load features data from
+ * @returns {FeaturesData[]} all the features data
+ */
 export const loadFeaturesFromFile = (fileName: string) => {
     const featuresFile = path.join(process.cwd(), `/main_content/${fileName}`);
     const contents = fs.readFileSync(featuresFile, 'utf-8').trim();
@@ -21,6 +31,11 @@ export const loadFeaturesFromFile = (fileName: string) => {
 
 }
 
+/**
+ * Retrieves all the features data from the given string
+ * @param {string} contents the contents to parse
+ * @returns {FeaturesData[]} the features data from the given string
+ */
 export const parseFeaturesDataList = (contents: string): FeaturesData[] => {
     let featuresDataList: FeaturesData[] = [];
     while (contents.length > 0) {
@@ -36,10 +51,15 @@ export const parseFeaturesDataList = (contents: string): FeaturesData[] => {
     return featuresDataList;
 }
 
-export const parseFeaturesData = (contents: string): { "contents": string, "info": FeaturesData } => {
+/**
+ * Retrieves a single features data from the given string
+ * @param contents the contents to parse a single features data from
+ * @returns {ParseContents} the parsed features data and the remainder of the given contents
+ */
+export const parseFeaturesData = (contents: string): ParseContents<FeaturesData> => {
     // parse until everything has been parsed from the file contents
-    let featuresData;
-    let features;
+    let featuresData: FeaturesData;
+    let features: ParseContents<FeatureInfo[]>;
     while (contents.length > 0) {
         if (titleRE.test(contents)) {
             // strip the 'title: '
@@ -65,8 +85,8 @@ export const parseFeaturesData = (contents: string): { "contents": string, "info
     return { "contents": contents, "info": featuresData };
 }
 
-const parseFeaturesList = (contents: string): { "contents": string, "info": FeatureInfo[] } => {
-    let featuresList = [];
+const parseFeaturesList = (contents: string): ParseContents<FeatureInfo[]> => {
+    let featuresList: FeatureInfo[] = [];
     while (contents.length > 0) {
         if (titleRE.test(contents)) {
             return { "contents": contents, "info": featuresList };
@@ -85,12 +105,12 @@ const parseFeaturesList = (contents: string): { "contents": string, "info": Feat
     return { "contents": contents, "info": featuresList };
 }
 
-export const parseFeatures = (contents: string): { contents: string, info: any } => {
-    let featureInfo
+export const parseFeatures = (contents: string): ParseContents<FeatureInfo> => {
+    let featureInfo: FeatureInfo;
     while (contents.length > 0) {
         if (nameRE.test(contents)) {
             // cut off 'name: '
-            contents = contents.substring(6);
+            contents = contents.trim().substring(6);
             // get the name and assign it
             let name: string = getFirstMatch(contents, featureRE);
             featureInfo = { ...featureInfo, "name": name.trim() };
@@ -98,21 +118,21 @@ export const parseFeatures = (contents: string): { contents: string, info: any }
 
         } else if (colorRE.test(contents)) {
             // cut off 'color: '
-            contents = contents.substring(7);
+            contents = contents.trim().substring(7);
             // get color and assign
             let color: string = getFirstMatch(contents, featureRE);
             featureInfo = { ...featureInfo, "color": color.trim() };
             contents = contents.substring(color.length);
 
         } else if (iconRE.test(contents)) {
-            contents = contents.substring(6);
+            contents = contents.trim().substring(6);
             let iconString = getFirstMatch(contents, featureRE);
             let icon: string = iconString.trim();
             featureInfo = { ...featureInfo, "icon": icon };
             contents = contents.substring(iconString.length);
 
         } else if (iconBgRE.test(contents)) {
-            contents = contents.substring(8);
+            contents = contents.trim().substring(8);
             let iconBgString = getFirstMatch(contents, featureRE);
             let iconBg: string[] = iconBgString.trim().split(',');
             iconBg = iconBg.map((color) => color.trim());
@@ -121,14 +141,14 @@ export const parseFeatures = (contents: string): { contents: string, info: any }
 
 
         } else if (descRE.test(contents)) {
-            contents = contents.substring(6);
+            contents = contents.trim().substring(6);
             let desc: string = getFirstMatch(contents, featureRE);
             featureInfo = { ...featureInfo, "desc": desc.trim() };
             contents = contents.substring(desc.length);
 
 
         } else if (roundnessRE.test(contents)) {
-            contents = contents.substring(11);
+            contents = contents.trim().substring(11);
             let roundness: string = getFirstMatch(contents, featureRE);
             featureInfo = { ...featureInfo, "roundness": roundness.trim() };
             contents = contents.substring(roundness.length);

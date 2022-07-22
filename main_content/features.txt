@@ -1,65 +1,66 @@
 title: SKILLS
 features:
-name: JavaScript / TypeScript
-color: yellow.500
-icon: SiJavascript 
-iconBg: yellow.200, yellow.900
-desc: This was used to develop this site, my Spotify DiscoverEase app, and BSL Tables. Check them out in the projects section
-roundness: sm
+    name: JavaScript / TypeScript
+    color: yellow.500
+    icon: SiJavascript 
+    iconBg: yellow.200, yellow.900
+    desc: This was used to develop this site, my Spotify Quick Discovery app, and BSL Tables.
+    roundness: sm
 features:
-name: Java
-color: orange.300
-icon: SiJava
-iconBg: gray.100, gray.700
-desc: I used Java to develop a simple Ray Tracer, as well as applications in my courses: Software Systems, Data Structures
-roundness: full
+    name: Java
+    color: orange.300
+    icon: SiJava
+    iconBg: gray.100, gray.700
+    desc: I used Java to develop a simple Ray Tracer, as well as applications in my courses: Software Systems, Data Structures.
+    roundness: full
 features:
-name: Python
-color: purple.500
-icon: SiPython
-iconBg: purple.100, purple.900
-desc: Gained experience by use through Machine Learning and scripting.
-roundness: md
+    name: Python
+    color: purple.500
+    icon: SiPython
+    iconBg: purple.100, purple.900
+    desc: Gained experience by use through Machine Learning and scripting.
+    roundness: md
 features:
-name: Web Dev
-color: black.400
-icon: MdOutlineComputer
-iconBg: gray.200, gray.700
-desc: Next.js, React.js, HTML, CSS
-roundness: lg
+    name: Web Dev
+    color: black.400
+    icon: MdOutlineComputer
+    iconBg: gray.200, gray.700
+    desc: Next.js, React.js, HTML, CSS
+    roundness: lg
 features:
-name: Development Tools
-color: green.500
-icon: FiServer
-iconBg: gray.300, gray.700
-desc: Git, Kubernetes, Docker, Postman
-roundness: md
+    name: Development Tools
+    color: green.500
+    icon: FiServer
+    iconBg: gray.300, gray.700
+    desc: Git, Kubernetes, Docker, Postman
+    roundness: md
 features:
-name: Database 
-color: red.500
-icon: GiDatabase
-iconBg: gray.200, gray.700
-desc: MongoDB, Redis, SQLite
-roundness: xl
+    name: Database 
+    color: red.500
+    icon: GiDatabase
+    iconBg: gray.200, gray.700
+    desc: MongoDB, Redis
+    roundness: xl
+
 title: HOBBIES
 features:
-name: Tennis
-color: green.500
-icon: IoTennisball
-iconBg: green.100, green.900
-desc: Played competitively until end of high school, now I'm volunteer instructor, while still hitting for fun
-roundness: full
+    name: Tennis
+    color: green.500
+    icon: IoTennisball
+    iconBg: green.100, green.900
+    desc: Played competitively until end of high school, now I'm volunteer instructor, while still hitting for fun.
+    roundness: full
 features:
-name: Hiking
-color: yellow.500
-icon: GiHiking
-iconBg: yellow.200, yellow.900
-desc: I love hiking with friends and family, but also ejnoy exploring on my own!
-roundness: sm 
+    name: Hiking
+    color: yellow.500
+    icon: GiHiking
+    iconBg: yellow.200, yellow.900
+    desc: I love hiking with friends and family, but also ejnoy exploring on my own!
+    roundness: sm 
 features:
-name: Weigth Lifting
-color: purple.500
-icon: GiWeightLiftingUp
-iconBg: purple.100, purple.900
-desc: I'm super passtionate about being physically active and healthy. I haven't missed a workout in almost 3 years!
-roundness: lg
+    name: Weigth Lifting
+    color: purple.500
+    icon: GiWeightLiftingUp
+    iconBg: purple.100, purple.900
+    desc: I'm super passtionate about being physically active and healthy. I haven't missed a workout in almost 3 years!
+    roundness: lg
