@@ -8,7 +8,7 @@ const Header = ({ title, }: Props) => {
     return (
         <Head>
             <title>{title}</title>
-            <link rel="icon" href="/images/favicon.ico" />
+            <link rel="icon" href="/images/siteicon.svg" />
             <meta charSet="UTF-8"></meta>
         </Head>
     )
