@@ -5,7 +5,8 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";
 import TableDisplay from "../../components/TableDisplay";
-import Header from "../../components/Header";;
+import Header from "../../components/Header";
+import SpanText from "../../components/SpanText";
 import { AcademicData, AcademicRecord } from "../../../interfaces";
 import { academicRecord } from "../../../academics";
 
@@ -80,13 +81,16 @@ const Academics = ({ academicRecord }: Props) => {
                         <Box>
                             <Text fontSize='xl'>
                                 My progress towards a Computer Science Bachelor's Degree at { }
-                                <Text as={'span'} textDecoration='underline'>
-                                    <Link href="https://luddy.indiana.edu/">Indiana University Bloomington.</Link>
-                                </Text>
+                                <SpanText text={"Indiana University Bloomington."} link={"https://luddy.indiana.edu/"} decoration={"underline"} />
                                 { }  { }
                             </Text>
-                            <Text fontSize='xl'>On track to graduate in { }
-                                <Text as={'span'} textDecoration='underline'>May, 2025.</Text>
+                            <Text fontSize='xl'>
+                                <SpanText text={"Hutton Honors"} link={"https://hutton.indiana.edu/index.html"} decoration={"underline"} />
+                                { } Student and { }
+                                <SpanText text={"Founders Scholar."} link={"https://universityevents.iu.edu/events/special-event/convocation/index.html"} decoration={"underline"} />
+                                { } Dean's List all semesters.
+                                On track to graduate in { }
+                                <SpanText text={"May, 2025"} style={'italic'} />
                             </Text>
                         </Box>
                         <Spacer />
@@ -104,12 +108,6 @@ const Academics = ({ academicRecord }: Props) => {
                         <Checkbox name="highGradesOnly" onChange={(e) => chooseSelector(e.target.name, e.target.checked)}>Show only high grades</Checkbox>
                     </Stack>
                 </CheckboxGroup>
-                {/*
-                <CheckboxGroup>
-                    <Stack spacing={[1, 5]} direction={['column', 'row']}>
-                    </Stack>
-                </CheckboxGroup>
-                */}
                 <Box padding={2}>
                     <Heading paddingTop={2}>Classes</Heading>
                     <Stack paddingTop={5}>

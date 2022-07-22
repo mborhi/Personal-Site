@@ -42,7 +42,7 @@ const theme = extendTheme({
         fontWeight: 'bold',
       },
       h3: {
-        fontSize: ['1.25rem', '2.25rem'],
+        fontSize: ['1.25rem', '1.7rem'],
         fontWeight: 'bold',
       },
       ul: {
