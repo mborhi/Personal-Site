@@ -6,7 +6,6 @@ import {
     Tr,
     Th,
     Td,
-    TableCaption,
     TableContainer,
 } from '@chakra-ui/react'
 import { useColorModeValue } from "@chakra-ui/color-mode";

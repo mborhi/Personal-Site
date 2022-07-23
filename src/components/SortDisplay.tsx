@@ -1,4 +1,4 @@
-import { Container, Box, } from "@chakra-ui/layout";
+import { Box, } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 
 interface Props {

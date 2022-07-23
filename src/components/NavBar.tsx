@@ -19,8 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FaGithub } from 'react-icons/fa';
-import { FiSend, FiMail } from 'react-icons/fi';
-import { TiSocialLinkedinCircular } from 'react-icons/ti';
+import { FiMail } from 'react-icons/fi';
 import { BsLinkedin } from 'react-icons/bs';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 

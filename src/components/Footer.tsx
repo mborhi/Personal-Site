@@ -2,17 +2,13 @@ import {
   Box,
   chakra,
   Container,
-  Link,
   Stack,
   Text,
   useColorModeValue,
   VisuallyHidden,
 } from '@chakra-ui/react';
-import { FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
-import { TiSocialLinkedinCircular } from 'react-icons/ti';
-import { TbSend } from 'react-icons/tb';
-import { VscCircleFilled } from 'react-icons/vsc';
 import { BsLinkedin } from 'react-icons/bs';
 import { ReactNode } from 'react';
 

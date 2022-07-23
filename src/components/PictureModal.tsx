@@ -15,10 +15,10 @@ interface Props {
     image: ReactElement
     open: boolean
     handleModal: () => void
-    action: () => void
+    action: (src: string, name: string) => void
 }
 
-const PictureModal = ({ title, image, open, handleModal, action }) => {
+const PictureModal = ({ title, image, open, handleModal, action }: Props) => {
 
     const handleClose = () => {
         handleModal();
