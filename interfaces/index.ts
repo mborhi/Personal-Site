@@ -1,6 +1,4 @@
-import { ReactElement } from "react";
-import { IconType } from "react-icons/lib";
-
+// main content parsing
 export interface AcademicData {
     course: string
     name: string
@@ -25,4 +23,15 @@ export interface FeatureInfo {
 export interface FeaturesData {
     title: string
     features: FeatureInfo[]
+}
+
+// projects content parsing
+export interface ProjectData {
+    id: string
+    name: string
+    date: string
+    tech: string
+    image: string
+    desc: string
+    content: string
 }

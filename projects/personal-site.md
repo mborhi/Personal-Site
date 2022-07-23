@@ -2,7 +2,7 @@
 name: 'Personal Site'
 date: '2022-07-14'
 tech: 'Next.js, TypeScript, ChakraUI, Jest, Storybook'
-image: '/images/banner-redimensionat.jpeg'
+image: '/images/PersonalSiteProjectImage.png'
 desc: 'This website! Built and designed this portfolio website to display my experience and skills.'
 ---
 
