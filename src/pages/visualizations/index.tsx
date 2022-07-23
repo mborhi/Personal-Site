@@ -194,11 +194,11 @@ const Visualizations = ({ visContent }: Props) => {
         <>
             <Header title='Visualizations' />
             <NavBar />
-            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5}>
                 <Box >
                     <Heading>Visualizations</Heading>
                 </Box>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} paddingTop={10}>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} paddingTop={10} paddingBottom={10}>
                     <GridItem>
                         <Text>
                             Use the slider to adjust the size of the array. After selecting the size,
@@ -243,7 +243,7 @@ const Visualizations = ({ visContent }: Props) => {
                         <SortDisplay nums={nums} />
                     </GridItem>
                 </SimpleGrid>
-                <Box textStyle='mainContent' padding={5}>
+                <Box textStyle='mainContent' paddingTop={5}>
                     <ReactMarkdown children={getSortAlgoContent()}></ReactMarkdown>
                 </Box>
             </Container>

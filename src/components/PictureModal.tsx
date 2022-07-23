@@ -40,7 +40,7 @@ const PictureModal = ({ title, image, open, handleModal, action }) => {
                         <Button colorScheme='blue' mr={3} onClick={() => handleModal()}>
                             Close
                         </Button>
-                        <Button variant='ghost' onClick={() => action('imageSource', 'title.jpg')}>Download</Button>
+                        <Button variant='ghost' onClick={() => action('imageSource', `${title}`)}>Download</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

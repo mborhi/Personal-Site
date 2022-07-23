@@ -18,7 +18,7 @@ features:
     color: purple.500
     icon: SiPython
     iconBg: purple.100, purple.900
-    desc: Gained experience by use through Machine Learning and scripting.
+    desc: Gained familiarity in this language with statistics and backend development.
     roundness: md
 features:
     name: Web Dev
@@ -55,12 +55,12 @@ features:
     color: yellow.500
     icon: GiHiking
     iconBg: yellow.200, yellow.900
-    desc: I love hiking with friends and family, but also ejnoy exploring on my own!
+    desc: I like hiking with friends and family, but also enjoy exploring on my own!
     roundness: sm 
 features:
-    name: Weigth Lifting
+    name: Weight Lifting
     color: purple.500
     icon: GiWeightLiftingUp
     iconBg: purple.100, purple.900
-    desc: I'm super passtionate about being physically active and healthy. I haven't missed a workout in almost 3 years!
+    desc: I'm super passionate about being physically active and healthy, and have been weight training for more than 3 years now.
     roundness: lg

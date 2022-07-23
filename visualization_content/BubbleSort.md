@@ -2,7 +2,8 @@
 Bubble Sort is a comparison based sorting algorithm. It works by comparing adjacent elements starting from the front of the array and switching elements appropriately. As it can be seen from the visualization, this creates a "bubbling" effect.
 The **Time Complexity** is O(N^2), where N is the size of the array. The **Space Complexity** is O(1). Bubble sort is an effective algorithm when N is known to be small, and no extra space is used. 
 
-**Implementation**
+### Implementation
+
 Below is the JavaScript implementation for Bubble Sort:
 
 ```

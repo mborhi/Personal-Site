@@ -21,7 +21,7 @@ const Index = ({ content }) => {
       <Header title='Home' />
       <NavBar />
       <Box bg={useColorModeValue('gray.50', 'gray.900')} paddingTop={5}>
-        <Container>
+        <Container maxWidth="40rem">
           <Text fontWeight='light' fontSize='4xl'>
             Hello! I'm
             { } <Text as='span' textDecoration='' fontWeight='medium' color='blue.400'>Marcell Borhi</Text>

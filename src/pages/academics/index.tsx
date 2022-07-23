@@ -74,7 +74,7 @@ const Academics = ({ academicRecord }: Props) => {
         <>
             <Header title='Academics' />
             <NavBar />
-            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5}>
                 <Box>
                     <Heading as='h1'>Computer Science Bachelor's Degree</Heading>
                     <Flex paddingTop={5} paddingBottom={2}>

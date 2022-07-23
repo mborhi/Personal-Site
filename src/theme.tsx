@@ -34,15 +34,15 @@ const theme = extendTheme({
   textStyles: {
     mainContent: {
       h1: {
-        fontSize: ['2rem', '3rem'],
+        fontSize: ['2rem', '2.5rem'],
         fontWeight: 'bold',
       },
       h2: {
-        fontSize: ['1.75rem', '2.5rem'],
+        fontSize: ['1.8rem', '2.2rem'],
         fontWeight: 'bold',
       },
       h3: {
-        fontSize: ['1.25rem', '1.7rem'],
+        fontSize: ['1.4rem', '1.75rem'],
         fontWeight: 'bold',
       },
       ul: {
