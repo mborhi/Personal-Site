@@ -1,21 +1,14 @@
 ---
-name: 'Spotify Web API Music Discovery'
+name: 'Spotify Music Discovery'
 date: '2022-06-01'
 tech: 'NextJS, APIs, Docker, Kubernetes'
-image: '/images/profile.jpeg'
+image: '/images/SpotifyQuickDiscoverImage.png'
 desc: 'Developed a web application utilizing the Spotify Web API to make new music discovery easy'
 ---
 
-# Test Project Name
+# Spotify Music Discovery
 
-Information about this project
+***This project is currently under development, but will be complete soon!***
 
-* Bullet points about this project
-* Bullet points about this project
-* Bullet points about this project
-* Bullet points about this project
-* Bullet points about this project
-* Bullet points about this project
+Please see the GitHub repository for updates: **[https://github.com/mborhi/Spotify-Quick-Discover-App](https://github.com/mborhi/Spotify-Quick-Discover-App)**
 
-
-More information

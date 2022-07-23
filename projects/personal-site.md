@@ -8,12 +8,12 @@ desc: 'This website! Built and designed this portfolio website to display my exp
 
 # Personal Site
 
-Built using Next.js with TypeScript and ChakraUI, tested with Jest and Storybook
+Built using Next.js with TypeScript and ChakraUI, tested with Jest and Storybook. This serves to display my skills, experience, and my academic record, as well as some cool sorting visualizations.
 
 ## Development
 
-This was a great learning expereince on web development. Before making this site, I knew close to nothing about making full-stack web dev. As I learned, there are ***many*** ways to do the same thing.
+As a starting point I made a bullet point list on what I wanted to include on the website, as well as a simple wireframe drawing for how it should be designed. To implement the intended features of the site, I used _Test Driven Development_ principles to come up with design that allows for easy modification of the website's content. Storing the contents of pages which are subject to change in files separates the issue of presenting and styling it, and handling website interaction. This simultaneously made it easier to test the website, as utilities for parsing file contents, and components displaying these can each be unit tested efficiently. 
 
-## Testing
+## What I Learned
 
-To ensure that everything... I used Jest for Unit testing specifically for the visualizaion testing, and Storybook for component testing. Using **Test Driven Development** helped me a lot in getting a final product out.
+Making this website I learned a lot about web development and design. Specifically, that there are _many_ ways to do the same thing, and often times the quickest or the most complex is not the best. Having a great understanding of the technologies and software development is important as it allow for choosing the right tools for the task. 
