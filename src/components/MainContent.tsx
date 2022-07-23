@@ -99,7 +99,7 @@ export default function SplitWithImage({ content }: Props) {
                 <Stack spacing={4}>
                     <Heading as='h1' fontSize='1.2em' fontWeight='semibold'>ABOUT ME</Heading>
                     <Text fontSize={'lg'}>
-                        As a Computer Science major, I am specializing in Artifical Intelligence and graduating in Spring 2025.
+                        I am a Computer Science major specializing in Artifical Intelligence and graduating in Spring 2025.
                         I began studying at IU in the Fall of 2021, and have only become more driven and passionate since. Read
                         about my skills, hobbies and experience below. And make sure to check out my sorting { }
                         <Link href='/visualizations' textDecoration='underline'>visualizations</Link>
