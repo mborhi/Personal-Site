@@ -1,6 +1,6 @@
 ---
 name: 'Spotify Music Discovery'
-date: '2022-06-01'
+date: '2022-07-01'
 tech: 'NextJS, APIs, Docker, Kubernetes'
 image: '/images/SpotifyQuickDiscoverImage.png'
 desc: 'Developed a web application utilizing the Spotify Web API to make new music discovery easy'

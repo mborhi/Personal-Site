@@ -143,7 +143,7 @@ export default function SplitWithImage({ content }: Props) {
                 <Stack>
                     <Heading as='h1' fontSize='1.2em' fontWeight='semibold'>EXPERIENCE</Heading>
                     <Text fontSize={'lg'}>
-                        Through acadmeic work and personal projects, I have gained expereince in building full stack web applications,
+                        Through academic work and personal projects, I have gained experience in building full stack web applications,
                         distributed systems, and simple computer graphics. Playing competitive tennis both individually and on a team
                         has given me great communication, leadership and teamwork skills.
                     </Text>
