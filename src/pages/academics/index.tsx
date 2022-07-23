@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/checkbox";
 import { Heading, Text, Stack, Box, SimpleGrid, Container, Flex, Spacer, Link } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/color-mode";
@@ -7,7 +7,7 @@ import NavBar from "../../components/NavBar";
 import TableDisplay from "../../components/TableDisplay";
 import Header from "../../components/Header";
 import SpanText from "../../components/SpanText";
-import { AcademicData, AcademicRecord } from "../../../interfaces";
+import { AcademicData, AcademicRecord, FilterOption } from "../../../interfaces";
 import { academicRecord } from "../../../academics";
 
 // using get static props because this data could be obtained by parsing in the future
@@ -27,7 +27,7 @@ interface Props {
 
 const Academics = ({ academicRecord }: Props) => {
 
-    const [selectors, setSelectors] = useState([]);
+    const [selectors, setSelectors] = useState<FilterOption[]>([]);
 
     const chooseSelector = (value: string, checked: boolean) => {
         if (value === "majorOnly") {
@@ -40,11 +40,11 @@ const Academics = ({ academicRecord }: Props) => {
     const setMajorOnly = (checked: boolean) => {
         if (checked) {
             let currentSelectors = selectors;
-            currentSelectors = [...currentSelectors, onlyMajor];
+            currentSelectors = [...currentSelectors, { name: "majorOnly", value: onlyMajor }];
             setSelectors(currentSelectors);
         } else {
             // remove this filter option
-            const currentSelectors = selectors.filter((selector) => selector.name !== "onlyMajor");
+            const currentSelectors = selectors.filter((selector) => selector.name !== "majorOnly");
             setSelectors(currentSelectors);
 
         }
@@ -53,11 +53,11 @@ const Academics = ({ academicRecord }: Props) => {
     const setHighGradeOnly = (checked: boolean) => {
         if (checked) {
             let currentSelectors = selectors;
-            currentSelectors = [...currentSelectors, onlyHighGrade];
+            currentSelectors = [...currentSelectors, { name: "highGradesOnly", value: onlyHighGrade }];
             setSelectors(currentSelectors);
         } else {
             // remove this filter option
-            const currentSelectors = selectors.filter((selector) => selector.name !== "onlyHighGrade");
+            const currentSelectors = selectors.filter((selector) => selector.name !== "highGradesOnly");
             setSelectors(currentSelectors);
         }
     }

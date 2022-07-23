@@ -1,4 +1,9 @@
-// main content parsing
+// academic record filtering
+export interface FilterOption {
+    name: string
+    value: (a: AcademicData) => boolean
+}
+
 export interface AcademicData {
     course: string
     name: string
@@ -11,6 +16,7 @@ export interface AcademicRecord {
     data: AcademicData[]
 }
 
+// main content parsing
 export interface FeatureInfo {
     name: string
     color: string

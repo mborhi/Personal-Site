@@ -11,12 +11,13 @@ import {
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { Heading } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { AcademicData } from '../../interfaces';
+import { AcademicData, FilterOption } from '../../interfaces';
+
 
 interface Props {
     title: string
     data: AcademicData[]
-    options: ((entry: AcademicData) => boolean)[]
+    options: FilterOption[]
 }
 
 const TableDisplay = ({ title, data, options }: Props) => {
@@ -29,7 +30,7 @@ const TableDisplay = ({ title, data, options }: Props) => {
         } else {
             let filtered = data;
             options.forEach((option) => {
-                filtered = filtered.filter((entry) => option(entry));
+                filtered = filtered.filter((entry) => option.value(entry));
             });
             setFilteredData(filtered);
         }
