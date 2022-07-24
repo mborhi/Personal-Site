@@ -54,7 +54,7 @@ export default function NavBar() {
     )
 
     const contactMe = (
-        <Link href="https://www.linkedin.com/in/marcell-borhi/">
+        <Link href="mailto:mborhi@iu.edu">
             <Tooltip hasArrow label='Contact Me' bg='gray.300' color='black'>
                 <Button>
                     <FiMail size="1.5em" />

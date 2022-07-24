@@ -45,7 +45,7 @@ const Project = ({ projectData }) => {
                         <Link href='/projects'><Heading size='md'>Back to all projects</Heading></Link>
                     </Box>
                 </HStack>
-                <Box textStyle='mainContent'>
+                <Box textStyle='projectContent'>
                     <ReactMarkdown children={projectData.content}></ReactMarkdown>
                 </Box>
             </Container>

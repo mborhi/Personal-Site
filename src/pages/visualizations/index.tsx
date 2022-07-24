@@ -202,7 +202,7 @@ const Visualizations = ({ visContent }: Props) => {
                     <GridItem>
                         <Text>
                             Use the slider to adjust the size of the array. After selecting the size,
-                            click the "Play" button, to visualize the sorting. Pause the sorting at any time, and use
+                            click the "Start" button, to visualize the sorting. Pause the sorting at any time, and use
                             the buttons to go backwards and forwards in 'steps' in the visualization.
                         </Text>
                     </GridItem>
@@ -224,7 +224,7 @@ const Visualizations = ({ visContent }: Props) => {
                     <GridItem>
                         <VStack>
                             <Text fontWeight='bold'>This is a visualization for {sortOption.name}</Text>
-                            <Button onClick={() => generateArr(nums.length, nums.length)}>Reset Array</Button>
+                            <Button onClick={() => generateArr(nums.length, nums.length)} variant='solid'>Reset Array</Button>
                             <Heading as='h5' size='sm'>Array Size:</Heading>
                             <Slider defaultValue={30} min={10} max={110} onChange={(val) => generateArr(val, val)}>
                                 <SliderTrack>
@@ -234,7 +234,7 @@ const Visualizations = ({ visContent }: Props) => {
                             </Slider>
                             <ButtonGroup>
                                 <Button onClick={() => backStep()} isDisabled={!paused}>Back</Button>
-                                <Button onClick={() => toggleSort()}>{paused ? "Start" : "Pause"}</Button>
+                                <Button onClick={() => toggleSort()} variant='solid'>{paused ? "Start" : "Pause"}</Button>
                                 <Button onClick={() => takeStep()} isDisabled={!paused}>Forward</Button>
                             </ButtonGroup>
                         </VStack>

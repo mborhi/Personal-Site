@@ -48,7 +48,7 @@ features:
     color: green.500
     icon: IoTennisball
     iconBg: green.100, green.900
-    desc: Played competitively until end of high school, now I'm volunteer instructor, while still hitting for fun.
+    desc: Played competitively until end of high school, now I'm a volunteer instructor, while still hitting for fun.
     roundness: full
 features:
     name: Hiking
