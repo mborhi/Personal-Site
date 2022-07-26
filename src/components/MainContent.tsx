@@ -139,7 +139,7 @@ export default function SplitWithImage({ content }: Props) {
                         </Stack>
                     ))}
                 </Stack>
-                <Flex>
+                <Flex style={{ cursor: 'pointer' }}>
                     <Picture action={handleModal} />
                 </Flex>
             </SimpleGrid>
