@@ -12,6 +12,7 @@ import {
     Box,
     Link,
 } from '@chakra-ui/react';
+import NextImage from 'next/image';
 import * as SiIcons from 'react-icons/si';
 import * as GiIcons from 'react-icons/gi';
 import * as IoIcons from 'react-icons/io5';
@@ -23,6 +24,8 @@ import PictureModal from './PictureModal';
 import { saveAs } from 'file-saver';
 import { FeaturesData } from '../../interfaces';
 import { IconType } from 'react-icons/lib';
+import resumePictureLight from '../../public/images/PersonalSiteResumeLight.jpeg';
+import resumePictureDark from '../../public/images/PersonalSiteResumeDark.jpeg';
 
 interface PictureProps {
     action: () => void
@@ -34,16 +37,17 @@ interface PictureProps {
  */
 const Picture = ({ action }: PictureProps) => {
     return (
-        <Image
+        <NextImage
             onClick={() => action()}
             // rounded={'md'}
             alt={'feature image'}
             src={useColorModeValue(
-                '/images/PersonalSiteResumeLight.jpeg', // light mode
-                '/images/PersonalSiteResumeDark.jpeg' // dark mode
+                resumePictureLight, // light mode
+                resumePictureDark // dark mode
             )
             }
             objectFit={'cover'}
+            priority
         />
     )
 }
