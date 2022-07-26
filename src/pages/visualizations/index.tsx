@@ -18,7 +18,7 @@ import SortDisplay from "../../components/SortDisplay";
 import Footer from "../../components/Footer";
 import MenuOptions from "../../components/MenuOptions";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { getAllVisualizationContent, getVisualizationContent, VisualizationContent } from "../../../utils/visualization";
+import { getAllVisualizationContent, VisualizationContent } from "../../../utils/visualization";
 
 
 export const getStaticProps = async () => {

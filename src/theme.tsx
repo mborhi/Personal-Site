@@ -69,36 +69,7 @@ const theme = extendTheme({
         whiteSpace: 'pre-wrap',
       }
     },
-    projectContent: {
-      h1: {
-        fontSize: ['2rem', '2.5rem'],
-        fontWeight: 'bold',
-      },
-      h2: {
-        fontSize: ['1.8rem', '2.2rem'],
-        fontWeight: 'bold',
-      },
-      h3: {
-        fontSize: ['1.4rem', '1.75rem'],
-        fontWeight: 'bold',
-      },
-      ul: {
-        fontSize: ['1rem', '1.2rem'],
-        fontWeight: 'normal',
-        listStyleType: 'none'
-      },
-      li: {
-        fontSize: ['1rem', '1.2rem'],
-        fontWeight: 'normal',
-      },
-      p: {
-        fontSize: ['1rem', '1.2rem'],
-        fontWeight: 'normal',
-      },
-      pre: {
-        fontSize: ['0.8rem', '1rem'],
-        whiteSpace: 'pre-wrap',
-      },
+    projectLinks: {
       a: {
         color: 'blue.400',
         textDecoration: 'underline'
