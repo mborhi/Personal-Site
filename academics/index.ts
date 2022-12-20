@@ -87,4 +87,39 @@ export const academicRecord: AcademicRecord[] = [
             }
         ]
     },
+    {
+        title: "Fall 2022",
+        data: [
+            {
+                course: "CSCI-B 351",
+                name: "Intro to Artificial Intelligence",
+                grade: "A+",
+                isMajor: true
+            },
+            {
+                course: "AST-A 105",
+                name: "Stars and Galaxies",
+                grade: "A",
+                isMajor: false
+            },
+            {
+                course: "CSCI-C 311",
+                name: "Programming Languages",
+                grade: "A",
+                isMajor: false
+            },
+            {
+                course: "CSCI-P424",
+                name: "Advanced Functional Programming",
+                grade: "A",
+                isMajor: false
+            },
+            {
+                course: "MATH-S 303",
+                name: "Honors Course in Linear Algebra",
+                grade: "A-",
+                isMajor: false
+            }
+        ]
+    },
 ];

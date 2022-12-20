@@ -21,7 +21,7 @@ const Projects = ({ projects }) => {
         <>
             <Header title='Projects' />
             <NavBar />
-            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5} textStyle="containerContent">
                 <Heading>Projects</Heading>
                 <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
                     {projects.map((project, idx) => (

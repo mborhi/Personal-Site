@@ -194,7 +194,7 @@ const Visualizations = ({ visContent }: Props) => {
         <>
             <Header title='Visualizations' />
             <NavBar />
-            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} textStyle="containerContent">
                 <Box >
                     <Heading>Visualizations</Heading>
                 </Box>
@@ -243,7 +243,7 @@ const Visualizations = ({ visContent }: Props) => {
                         <SortDisplay nums={nums} />
                     </GridItem>
                 </SimpleGrid>
-                <Box textStyle='mainContent' paddingTop={5}>
+                <Box textStyle={["mainContent"]} paddingTop={["1rem", "3rem", "5rem"]}>
                     <ReactMarkdown children={getSortAlgoContent()}></ReactMarkdown>
                 </Box>
             </Container>

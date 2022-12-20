@@ -36,7 +36,7 @@ const Project = ({ projectData }) => {
         <>
             <Header title={projectData.name} />
             <NavBar />
-            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} textStyle={'containerContent'}>
                 <HStack marginBottom={2}>
                     <Box>
                         <Link href='/projects'><BiArrowBack size='1em' /></Link>

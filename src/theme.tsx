@@ -75,6 +75,9 @@ const theme = extendTheme({
         textDecoration: 'underline'
       },
     },
+    containerContent: {
+      padding: ['2rem 2rem 2rem 2rem', '3rem 3rem 3rem 3rem', '3rem 3rem 3rem 3rem', '1.2rem 10rem 3rem 10rem']
+    }
   },
   semanticTokens: {
     colors: {

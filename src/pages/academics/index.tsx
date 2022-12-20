@@ -74,7 +74,7 @@ const Academics = ({ academicRecord }: Props) => {
         <>
             <Header title='Academics' />
             <NavBar />
-            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} paddingTop={5}>
+            <Container bg={useColorModeValue('gray.50', 'gray.900')} maxW="100%" py={12} textStyle="containerContent">
                 <Box>
                     <Heading as='h1'>Computer Science Bachelor's Degree</Heading>
                     <Flex paddingTop={5} paddingBottom={2}>
@@ -97,7 +97,7 @@ const Academics = ({ academicRecord }: Props) => {
                         <Box>
                             <Text fontSize='xl'>
                                 Major GPA: 4.0
-                                Cumulative GPA: 3.9
+                                Overall GPA: 3.91
                             </Text>
                         </Box>
                     </Flex>
@@ -108,8 +108,8 @@ const Academics = ({ academicRecord }: Props) => {
                         <Checkbox name="highGradesOnly" onChange={(e) => chooseSelector(e.target.name, e.target.checked)}>Show only high grades</Checkbox>
                     </Stack>
                 </CheckboxGroup>
-                <Box padding={2}>
-                    <Heading paddingTop={2}>Classes</Heading>
+                <Box >
+                    <Heading >Classes</Heading>
                     <Stack paddingTop={5}>
                         {academicRecord.map((record) => (
                             <TableDisplay title={record.title} data={record.data} options={selectors} key={record.title} />
