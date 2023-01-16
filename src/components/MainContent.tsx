@@ -24,8 +24,8 @@ import PictureModal from './PictureModal';
 import { saveAs } from 'file-saver';
 import { FeaturesData } from '../../interfaces';
 import { IconType } from 'react-icons/lib';
-import resumePictureLight from '../../public/images/PersonalSiteResumeLight.jpeg';
-import resumePictureDark from '../../public/images/PersonalSiteResumeDark.jpeg';
+import resumePictureLight from '../../public/images/resume/PersonalSiteResumeLight.jpeg';
+import resumePictureDark from '../../public/images/resume/PersonalSiteResumeDark.jpeg';
 
 interface PictureProps {
     action: () => void
@@ -87,8 +87,8 @@ export default function SplitWithImage({ content }: Props) {
         try {
             let isFileSaverSupported = !!new Blob;
             if (isFileSaverSupported) {
-                // download the image (light mode resume)
-                saveAs('/images/PersonalSiteResumeLight.pdf', name + 'MarcellBorhi');
+                // download the light mode resume as pdf
+                saveAs('/images/resume/PersonalSiteResumeLight.pdf', name + 'MarcellBorhi');
             }
         } catch (e) {
             console.log('error downloading: ', e);

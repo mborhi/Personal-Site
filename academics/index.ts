@@ -60,13 +60,13 @@ export const academicRecord: AcademicRecord[] = [
                 course: "CSCI-Y 391",
                 name: "Undergraduate Independent System Development",
                 grade: "A+",
-                isMajor: false
+                isMajor: true
             },
             {
                 course: "MATH-M 212",
                 name: "Calculus II",
                 grade: "A-",
-                isMajor: false
+                isMajor: true
             },
             {
                 course: "PHIL-P 141",
@@ -106,19 +106,19 @@ export const academicRecord: AcademicRecord[] = [
                 course: "CSCI-C 311",
                 name: "Programming Languages",
                 grade: "A",
-                isMajor: false
+                isMajor: true
             },
             {
                 course: "CSCI-P424",
                 name: "Advanced Functional Programming",
                 grade: "A",
-                isMajor: false
+                isMajor: true
             },
             {
                 course: "MATH-S 303",
                 name: "Honors Course in Linear Algebra",
                 grade: "A-",
-                isMajor: false
+                isMajor: true
             }
         ]
     },

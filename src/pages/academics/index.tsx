@@ -96,8 +96,7 @@ const Academics = ({ academicRecord }: Props) => {
                         <Spacer />
                         <Box>
                             <Text fontSize='xl'>
-                                Major GPA: 4.0
-                                Overall GPA: 3.91
+                                GPA: 3.91/4.0
                             </Text>
                         </Box>
                     </Flex>
